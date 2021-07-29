@@ -1,0 +1,12 @@
+base:
+  project: Machine Fault Recognition
+  random_state: 10
+
+data_source:
+  s3_source: Training_Batch_Files
+
+load_data:
+  raw_data: Training_Raw_Files
+  good_raw: Training_Raw_Files_Validated/Good_Raw
+  bad_raw: Training_Raw_Files_Validated/Bad_Raw
+

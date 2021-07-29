@@ -4,9 +4,17 @@ import os
 dirs = [
     "src",
     "Training_Batch_Files",
+    "Training_Raw_Files",
+    "Training_Raw_Files_Validated",
+    os.path.join("Training_Raw_Files_Validated", "Good_Raw"),
+    os.path.join("Training_Raw_Files_Validated", "Bad_Raw"),
     "Training_Database",
     "Training_Logs",
     "Prediction_Batch_Files",
+    "Prediction_Raw_Files",
+    "Prediction_Raw_Files_Validated",
+    os.path.join("Prediction_Raw_Files_Validated", "Good_Raw"),
+    os.path.join("Prediction_Raw_Files_Validated", "Bad_Raw"),
     "Prediction_Database",
     "Prediction_Logs",
     "Prediction_Output_File",
@@ -27,5 +35,5 @@ files = [
 ]
 
 for file_ in files:
-    with open(file_, "w") as f:
+    with open(file_, "a") as f:
         pass
