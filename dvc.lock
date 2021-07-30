@@ -6,10 +6,32 @@ load_data:
     size: 8760608
     nfiles: 56
   - path: src/load_data.py
-    md5: 669b94a18ea61f5d1adf85917534b119
-    size: 1399
+    md5: 6cf43046404495039e211ed16fae37f3
+    size: 1569
   outs:
   - path: Training_Raw_Files
     md5: 94ae01702c45ffc517352ed6262da7d6.dir
     size: 8757191
     nfiles: 27
+validate_data:
+  cmd: python src/validate_data.py --config=params.yaml
+  deps:
+  - path: Training_Raw_Files
+    md5: 94ae01702c45ffc517352ed6262da7d6.dir
+    size: 8757191
+    nfiles: 27
+  - path: src/load_data.py
+    md5: 6cf43046404495039e211ed16fae37f3
+    size: 1569
+  - path: src/validate_data.py
+    md5: c0271a965b626e0daf152c1cf23d6c7a
+    size: 980
+  outs:
+  - path: Training_Raw_Files_Validated/Bad_Raw
+    md5: 6dfdf1543ffbf99e539a85b4c165ec20.dir
+    size: 8290865
+    nfiles: 25
+  - path: Training_Raw_Files_Validated/Good_Raw
+    md5: 9aea4ebd01da365a7b183075fcc83b44.dir
+    size: 510855
+    nfiles: 2

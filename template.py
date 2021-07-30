@@ -5,10 +5,8 @@ dirs = [
     "src",
     "Training_Batch_Files",
     "Training_Database",
-    "Training_Logs",
     "Prediction_Batch_Files",
     "Prediction_Database",
-    "Prediction_Logs",
     "Prediction_Output_File",
     "models"
 ]

@@ -7,6 +7,8 @@ data_source:
 
 load_data:
   raw_data: Training_Raw_Files
+  train_schema: src/schema_training.json
+  raw_validated: Training_Raw_Files_Validated
   good_raw: Training_Raw_Files_Validated/Good_Raw
   bad_raw: Training_Raw_Files_Validated/Bad_Raw
 

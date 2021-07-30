@@ -6,3 +6,13 @@ stages:
       - Training_Batch_Files
     outs:
       - Training_Raw_Files
+
+  validate_data:
+    cmd: python src/validate_data.py --config=params.yaml
+    deps:
+      - src/validate_data.py
+      - src/load_data.py
+      - Training_Raw_Files
+    outs:
+      - Training_Raw_Files_Validated/Good_Raw
+      - Training_Raw_Files_Validated/Bad_Raw
