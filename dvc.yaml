@@ -3,6 +3,6 @@ stages:
     cmd: python src/load_data.py --config=params.yaml
     deps:
       - src/load_data.py
-      - Training_Batch_Files/
+      - Training_Batch_Files
     outs:
-      - Training_Raw_Files/
+      - Training_Raw_Files

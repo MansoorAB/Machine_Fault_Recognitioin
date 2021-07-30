@@ -21,6 +21,8 @@ def load_data(config_path):
     raw_data = config['load_data']['raw_data']
 
     csv_files = glob.glob(os.path.join(source_data, "*.csv"))
+    # files = os.listdir(source_data)
+    os.makedirs(raw_data, exist_ok=True)
     for file in csv_files:
         shutil.copy(file, raw_data)
 
