@@ -194,23 +194,28 @@ class Model_Finder:
                 self.random_forest_score = roc_auc_score(test_y, self.prediction_random_forest) # AUC for Random Forest
                 self.logger_object.log(self.file_object, 'AUC for RF:' + str(self.random_forest_score))
 
+            # dump the comparison scores to json file
+            scores_file = self.config['reports']['scores']
+
+            with open(scores_file, "a") as f:
+                scores = {
+                    "cluster#": int(cluster_num),
+                    "XGBoost Score": self.xgboost_score,
+                    "RF Score": self.random_forest_score
+                }
+                self.logger_object.log(self.file_object, 'Writing scores for cluster: %d' % cn)
+                json.dump(scores, f, indent=4)
+                f.write('\n')
+
             #comparing the two models
             if(self.random_forest_score <  self.xgboost_score):
                 return 'XGBoost',self.xgboost
             else:
                 return 'RandomForest',self.random_forest
 
-            # dump the comparison scores to json file
-            scores_file = self.config['reports']['scores']
 
-            with open(scores_file, "a") as f:
-                scores = {
-                    "cluster#": int(cn),
-                    "XGBoost Score": self.xgboost_score,
-                    "RF Score": self.random_forest_score
-                }
-                json.dump(scores, f, indent=4)
-                f.write('\n')
+
+
 
         except Exception as e:
                 self.logger_object.log(self.file_object,

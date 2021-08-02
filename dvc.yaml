@@ -12,17 +12,12 @@ stages:
     deps:
       - src/validate_data.py
       - src/load_data.py
-      - Training_Raw_Files
-    outs:
-      - Training_Raw_Files_Validated/Good_Raw
-      - Training_Raw_Files_Validated/Bad_Raw
 
   transform_data:
     cmd: python src/transform_data.py --config=params.yaml
     deps:
       - src/transform_data.py
       - src/load_data.py
-      - Training_Raw_Files_Validated/Good_Raw
 
   insert_data:
     cmd: python src/insert_data_to_db.py --config=params.yaml
@@ -38,6 +33,7 @@ stages:
     deps:
       - Consolidated_Training_Data/InputFile.csv
       - src/train_model.py
+      - src/load_data.py
     params:
       - estimators.KNNImputer.params.n_neighbors
       - estimators.KNNImputer.params.weights
@@ -56,8 +52,6 @@ stages:
           cache: false
       - Reports/scores.json:
           cache: false
-    outs:
-      - models
 
 
 

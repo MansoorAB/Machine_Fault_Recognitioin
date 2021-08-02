@@ -32,3 +32,5 @@ xgboost==0.90
 zipp==2.0.1
 dvc
 dvc[gdrive]
+pytest
+tox
