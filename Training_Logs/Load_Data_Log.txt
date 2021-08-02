@@ -1,0 +1,29 @@
+2021-08-01/17:40:22		Load data started with params file: params.yaml
+2021-08-01/17:40:22		Created new directory: Training_Raw_Files
+2021-08-01/17:40:22		copying file Training_Batch_Files\Waferdefault_15010_130532.csv to Training_Raw_Files
+2021-08-01/17:40:22		copying file Training_Batch_Files\wafer_07012020_041011.csv to Training_Raw_Files
+2021-08-01/17:40:22		copying file Training_Batch_Files\Wafer_11012020_151432.csv to Training_Raw_Files
+2021-08-01/17:40:22		copying file Training_Batch_Files\Wafer_12012020_111.csv to Training_Raw_Files
+2021-08-01/17:40:22		copying file Training_Batch_Files\Wafer_12012020_111213.csv to Training_Raw_Files
+2021-08-01/17:40:22		copying file Training_Batch_Files\Wafer_13012020_141000.csv to Training_Raw_Files
+2021-08-01/17:40:22		copying file Training_Batch_Files\Wafer_14012020_113045.csv to Training_Raw_Files
+2021-08-01/17:40:22		copying file Training_Batch_Files\Wafer_15010_130532.csv to Training_Raw_Files
+2021-08-01/17:40:22		copying file Training_Batch_Files\Wafer_15012020_130532.csv to Training_Raw_Files
+2021-08-01/17:40:22		copying file Training_Batch_Files\wafer_16012020_134553.csv to Training_Raw_Files
+2021-08-01/17:40:22		copying file Training_Batch_Files\wafer_17012020_125434.csv to Training_Raw_Files
+2021-08-01/17:40:22		copying file Training_Batch_Files\Wafer_18012020_121532.csv to Training_Raw_Files
+2021-08-01/17:40:22		copying file Training_Batch_Files\wafer_20012020_090819.csv to Training_Raw_Files
+2021-08-01/17:40:22		copying file Training_Batch_Files\Wafer_20012020_135132.csv to Training_Raw_Files
+2021-08-01/17:40:22		copying file Training_Batch_Files\wafer_20022020_090716.csv to Training_Raw_Files
+2021-08-01/17:40:22		copying file Training_Batch_Files\Wafer_22012020_173245.csv to Training_Raw_Files
+2021-08-01/17:40:22		copying file Training_Batch_Files\wafer_22022020_041119.csv to Training_Raw_Files
+2021-08-01/17:40:22		copying file Training_Batch_Files\wafer_23012020_011008.csv to Training_Raw_Files
+2021-08-01/17:40:22		copying file Training_Batch_Files\Wafer_23012020_163456.csv to Training_Raw_Files
+2021-08-01/17:40:22		copying file Training_Batch_Files\Wafer_24012020_150121.csv to Training_Raw_Files
+2021-08-01/17:40:22		copying file Training_Batch_Files\Wafer_25012020_142112.csv to Training_Raw_Files
+2021-08-01/17:40:22		copying file Training_Batch_Files\wafer_28012020_051011.csv to Training_Raw_Files
+2021-08-01/17:40:22		copying file Training_Batch_Files\wafer_28042020_031911.csv to Training_Raw_Files
+2021-08-01/17:40:22		copying file Training_Batch_Files\wafer_29012020_060756.csv to Training_Raw_Files
+2021-08-01/17:40:22		copying file Training_Batch_Files\wafer_31012020_090811.csv to Training_Raw_Files
+2021-08-01/17:40:22		copying file Training_Batch_Files\Wafer_fault_detection.csv to Training_Raw_Files
+2021-08-01/17:40:22		copying file Training_Batch_Files\Wafer_text_130532.csv to Training_Raw_Files

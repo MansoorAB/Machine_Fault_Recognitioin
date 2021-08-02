@@ -19,7 +19,7 @@ def validate_data(log_file,config_path):
 
 if __name__ == "__main__":
     log_writer = logger.App_Logger()
-    file_object = open("Training_Logs/validateDataLog.txt", "w")
+    file_object = open("Training_Logs/Validate_Data_Log.txt", "w")
     args = argparse.ArgumentParser()
     args.add_argument("--config", default="params.yaml")
     parsed_args = args.parse_args()

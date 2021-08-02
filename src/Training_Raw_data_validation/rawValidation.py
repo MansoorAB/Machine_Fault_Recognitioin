@@ -25,10 +25,11 @@ class Raw_Data_validation:
 
     def __init__(self,config, log_file):
         self.Batch_Directory = config['load_data']['raw_data']
-        self.schema_path = config['load_data']['train_schema']
-        self.raw_validated = config['load_data']['raw_validated']
-        self.raw_good = config['load_data']['good_raw']
-        self.raw_bad = config['load_data']['bad_raw']
+        self.schema_path = config['validate_data']['train_schema']
+        self.raw_validated = config['validate_data']['raw_validated']
+        self.raw_good = config['validate_data']['good_raw']
+        self.raw_bad = config['validate_data']['bad_raw']
+        self.raw_archived = config['validate_data']['raw_archived']
         self.logger = App_Logger()
         self.file = log_file
 
@@ -55,7 +56,7 @@ class Raw_Data_validation:
             column_names = dic['ColName']
             NumberofColumns = dic['NumberofColumns']
 
-            message ="LengthOfDateStampInFile:: %s" %LengthOfDateStampInFile + "\t" + "LengthOfTimeStampInFile:: %s" % LengthOfTimeStampInFile +"\t " + "NumberofColumns:: %s" % NumberofColumns
+            message ="LengthOfDateStampInFile:: %s" %LengthOfDateStampInFile + "\t" + "LengthOfTimeStampInFile:: %s" % LengthOfTimeStampInFile +"\t " + "NumberOfColumns:: %s" % NumberofColumns
             self.logger.log(self.file,message)
 
         except ValueError:
@@ -187,30 +188,22 @@ class Raw_Data_validation:
         date = now.date()
         time = now.strftime("%H%M%S")
         try:
-
-            source = 'Training_Raw_files_validated/Bad_Raw/'
-            if os.path.isdir(source):
-                path = "TrainingArchiveBadData"
-                if not os.path.isdir(path):
-                    os.makedirs(path)
-                dest = 'TrainingArchiveBadData/BadData_' + str(date)+"_"+str(time)
+            if os.path.isdir(self.raw_bad):
+                if not os.path.isdir(self.raw_archived):
+                    os.makedirs(self.raw_archived)
+                dest = self.raw_archived + 'BadData_' + str(date)+"_"+str(time)
                 if not os.path.isdir(dest):
                     os.makedirs(dest)
-                files = os.listdir(source)
+                files = os.listdir(self.raw_bad)
                 for f in files:
                     if f not in os.listdir(dest):
-                        shutil.move(source + f, dest)
-                file = open("Training_Logs/GeneralLog.txt", 'a+')
-                self.logger.log(file,"Bad files moved to archive")
-                path = 'Training_Raw_files_validated/'
-                if os.path.isdir(path + 'Bad_Raw/'):
-                    shutil.rmtree(path + 'Bad_Raw/')
-                self.logger.log(file,"Bad Raw Data Folder Deleted successfully!!")
-                file.close()
+                        shutil.move(self.raw_bad + f, dest)
+                self.logger.log(self.file,"Bad files moved to archive")
+                if os.path.isdir(self.raw_bad):
+                    shutil.rmtree(self.raw_bad)
+                    self.logger.log(self.file,"Bad Raw Data Folder Deleted successfully!!")
         except Exception as e:
-            file = open("Training_Logs/GeneralLog.txt", 'a+')
-            self.logger.log(file, "Error while moving bad files to archive:: %s" % e)
-            file.close()
+            self.logger.log(self.file, "Error while moving bad files to archive:: %s" % e)
             raise e
 
 

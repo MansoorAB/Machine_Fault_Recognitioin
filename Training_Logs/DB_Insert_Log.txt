@@ -1,0 +1,23 @@
+2021-08-01/17:40:36		Data Insertion to mySQL db started...
+2021-08-01/17:40:36		Creating Training_Database and tables on the basis of given schema!!!
+2021-08-01/17:40:36		LengthOfDateStampInFile:: 8	LengthOfTimeStampInFile:: 6	 NumberOfColumns:: 592
+2021-08-01/17:40:36		Opened Training database successfully
+2021-08-01/17:42:18		Tables created successfully!!
+2021-08-01/17:42:18		Closed Training database successfully
+2021-08-01/17:42:18		Table creation Completed!!
+2021-08-01/17:42:18		Insertion of Data into Table started!!!!
+2021-08-01/17:42:18		Opened Training database successfully
+2021-08-01/17:42:24		 wafer_20022020_090716.csv: File loaded successfully!!
+2021-08-01/17:42:44		 wafer_28042020_031911.csv: File loaded successfully!!
+2021-08-01/17:42:44		Insertion in Table completed!!!
+2021-08-01/17:42:44		Deleting Good Data Folder!!!
+2021-08-01/17:42:44		Deleted directory: Training_Raw_Files_Validated/Good_Raw/
+2021-08-01/17:42:44		Good_Data folder deleted!!!
+2021-08-01/17:42:44		Moving bad files to Archive and deleting Bad_Data folder!!!
+2021-08-01/17:42:44		Bad files moved to archive
+2021-08-01/17:42:44		Bad Raw Data Folder Deleted successfully!!
+2021-08-01/17:42:44		Bad files moved to archive!! Bad folder Deleted!!
+2021-08-01/17:42:44		Database Operations completed!!
+2021-08-01/17:42:44		Extracting csv file from table
+2021-08-01/17:42:44		Opened Training database successfully
+2021-08-01/17:42:44		File exported successfully!!!

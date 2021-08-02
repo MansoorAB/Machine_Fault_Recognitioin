@@ -11,16 +11,19 @@ class dBOperation:
     """
       This class shall be used for handling all the SQL operations.
 
-      Written By: iNeuron Intelligence
+      Written By: Mansoor Baig
       Version: 1.0
       Revisions: None
 
       """
-    def __init__(self):
-        self.path = 'Training_Database/'
-        self.badFilePath = "Training_Raw_files_validated/Bad_Raw"
-        self.goodFilePath = "Training_Raw_files_validated/Good_Raw"
+    def __init__(self, config, log_file):
+        self.badFilePath = config['validate_data']['bad_raw']
+        self.goodFilePath = config['validate_data']['good_raw']
+        self.path = config['prepare_data']['train_db_folder']
+        self.fileFromDb = config['prepare_data']['train_folder']
+        self.fileName = config['prepare_data']['train_file']
         self.logger = App_Logger()
+        self.log_file = log_file
 
 
     def dataBaseConnection(self,DatabaseName):
@@ -31,21 +34,17 @@ class dBOperation:
                 Output: Connection to the DB
                 On Failure: Raise ConnectionError
 
-                 Written By: iNeuron Intelligence
+                 Written By: Mansoor Baig
                 Version: 1.0
                 Revisions: None
 
                 """
         try:
+            os.makedirs(self.path, exist_ok=True)
             conn = sqlite3.connect(self.path+DatabaseName+'.db')
-
-            file = open("Training_Logs/DataBaseConnectionLog.txt", 'a+')
-            self.logger.log(file, "Opened %s database successfully" % DatabaseName)
-            file.close()
+            self.logger.log(self.log_file, "Opened %s database successfully" % DatabaseName)
         except ConnectionError:
-            file = open("Training_Logs/DataBaseConnectionLog.txt", 'a+')
-            self.logger.log(file, "Error while connecting to database: %s" %ConnectionError)
-            file.close()
+            self.logger.log(self.log_file, "Error while connecting to database: %s" %ConnectionError)
             raise ConnectionError
         return conn
 
@@ -56,7 +55,7 @@ class dBOperation:
                         Output: None
                         On Failure: Raise Exception
 
-                         Written By: iNeuron Intelligence
+                         Written By: Mansoor Baig
                         Version: 1.0
                         Revisions: None
 
@@ -64,16 +63,11 @@ class dBOperation:
         try:
             conn = self.dataBaseConnection(DatabaseName)
             c=conn.cursor()
-            c.execute("SELECT count(name)  FROM sqlite_master WHERE type = 'table'AND name = 'Good_Raw_Data'")
+            c.execute("SELECT count(name)  FROM sqlite_master WHERE type = 'table' AND name = 'Good_Raw_Data'")
             if c.fetchone()[0] ==1:
                 conn.close()
-                file = open("Training_Logs/DbTableCreateLog.txt", 'a+')
-                self.logger.log(file, "Tables created successfully!!")
-                file.close()
-
-                file = open("Training_Logs/DataBaseConnectionLog.txt", 'a+')
-                self.logger.log(file, "Closed %s database successfully" % DatabaseName)
-                file.close()
+                self.logger.log(self.log_file, "Tables created successfully!!")
+                self.logger.log(self.log_file, "Closed %s database successfully" % DatabaseName)
 
             else:
 
@@ -83,7 +77,6 @@ class dBOperation:
                     #in try block we check if the table exists, if yes then add columns to the table
                     # else in catch block we will create the table
                     try:
-                        #cur = cur.execute("SELECT name FROM {dbName} WHERE type='table' AND name='Good_Raw_Data'".format(dbName=DatabaseName))
                         conn.execute('ALTER TABLE Good_Raw_Data ADD COLUMN "{column_name}" {dataType}'.format(column_name=key,dataType=type))
                     except:
                         conn.execute('CREATE TABLE  Good_Raw_Data ({column_name} {dataType})'.format(column_name=key, dataType=type))
@@ -91,22 +84,13 @@ class dBOperation:
 
                 conn.close()
 
-                file = open("Training_Logs/DbTableCreateLog.txt", 'a+')
-                self.logger.log(file, "Tables created successfully!!")
-                file.close()
-
-                file = open("Training_Logs/DataBaseConnectionLog.txt", 'a+')
-                self.logger.log(file, "Closed %s database successfully" % DatabaseName)
-                file.close()
+                self.logger.log(self.log_file, "Tables created successfully!!")
+                self.logger.log(self.log_file, "Closed %s database successfully" % DatabaseName)
 
         except Exception as e:
-            file = open("Training_Logs/DbTableCreateLog.txt", 'a+')
-            self.logger.log(file, "Error while creating table: %s " % e)
-            file.close()
+            self.logger.log(self.log_file, "Error while creating table: %s " % e)
             conn.close()
-            file = open("Training_Logs/DataBaseConnectionLog.txt", 'a+')
-            self.logger.log(file, "Closed %s database successfully" % DatabaseName)
-            file.close()
+            self.logger.log(self.log_file, "Closed %s database successfully" % DatabaseName)
             raise e
 
 
@@ -119,43 +103,36 @@ class dBOperation:
                                Output: None
                                On Failure: Raise Exception
 
-                                Written By: iNeuron Intelligence
+                                Written By: Mansoor Baig
                                Version: 1.0
                                Revisions: None
 
         """
 
         conn = self.dataBaseConnection(Database)
-        goodFilePath= self.goodFilePath
-        badFilePath = self.badFilePath
-        onlyfiles = [f for f in listdir(goodFilePath)]
-        log_file = open("Training_Logs/DbInsertLog.txt", 'a+')
+        onlyfiles = [f for f in listdir(self.goodFilePath)]
 
         for file in onlyfiles:
             try:
-                with open(goodFilePath+'/'+file, "r") as f:
+                with open(self.goodFilePath+'/'+file, "r") as f:
                     next(f)
                     reader = csv.reader(f, delimiter="\n")
                     for line in enumerate(reader):
                         for list_ in (line[1]):
                             try:
                                 conn.execute('INSERT INTO Good_Raw_Data values ({values})'.format(values=(list_)))
-                                self.logger.log(log_file," %s: File loaded successfully!!" % file)
                                 conn.commit()
                             except Exception as e:
                                 raise e
-
+                self.logger.log(self.log_file, " %s: File loaded successfully!!" % file)
             except Exception as e:
-
                 conn.rollback()
-                self.logger.log(log_file,"Error while creating table: %s " % e)
-                shutil.move(goodFilePath+'/' + file, badFilePath)
-                self.logger.log(log_file, "File Moved Successfully %s" % file)
-                log_file.close()
+                self.logger.log(self.log_file,"Error while creating table: %s " % e)
+                shutil.move(self.goodFilePath+'/' + file, self.badFilePath)
+                self.logger.log(self.log_file, "File Moved Successfully %s" % file)
                 conn.close()
 
         conn.close()
-        log_file.close()
 
 
     def selectingDatafromtableintocsv(self,Database):
@@ -167,15 +144,12 @@ class dBOperation:
                                Output: None
                                On Failure: Raise Exception
 
-                                Written By: iNeuron Intelligence
+                                Written By: Mansoor Baig
                                Version: 1.0
                                Revisions: None
 
         """
 
-        self.fileFromDb = 'Training_FileFromDB/'
-        self.fileName = 'InputFile.csv'
-        log_file = open("Training_Logs/ExportToCsv.txt", 'a+')
         try:
             conn = self.dataBaseConnection(Database)
             sqlSelect = "SELECT *  FROM Good_Raw_Data"
@@ -198,12 +172,10 @@ class dBOperation:
             csvFile.writerow(headers)
             csvFile.writerows(results)
 
-            self.logger.log(log_file, "File exported successfully!!!")
-            log_file.close()
+            self.logger.log(self.log_file, "File exported successfully!!!")
 
         except Exception as e:
-            self.logger.log(log_file, "File exporting failed. Error : %s" %e)
-            log_file.close()
+            self.logger.log(self.log_file, "File exporting failed. Error : %s" %e)
 
 
 

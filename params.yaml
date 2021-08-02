@@ -7,8 +7,18 @@ data_source:
 
 load_data:
   raw_data: Training_Raw_Files
+
+validate_data:
   train_schema: src/schema_training.json
   raw_validated: Training_Raw_Files_Validated
-  good_raw: Training_Raw_Files_Validated/Good_Raw
-  bad_raw: Training_Raw_Files_Validated/Bad_Raw
+  good_raw: Training_Raw_Files_Validated/Good_Raw/
+  bad_raw: Training_Raw_Files_Validated/Bad_Raw/
+  raw_archived: TrainingArchiveBadData/
+
+prepare_data:
+  train_db_folder: Training_Database/
+  train_folder: Consolidated_Training_Data/
+  train_file: InputFile.csv
+
+
 

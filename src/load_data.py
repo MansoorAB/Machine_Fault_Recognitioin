@@ -41,7 +41,7 @@ if __name__ == "__main__":
     os.makedirs('Training_Logs')
 
     log_writer = logger.App_Logger()
-    file_object = open("Training_Logs/loadDataLog.txt", "a")
+    file_object = open("Training_Logs/Load_Data_Log.txt", "w")
     args = argparse.ArgumentParser()
     args.add_argument("--config", default="params.yaml")
     parsed_args = args.parse_args()
@@ -49,4 +49,3 @@ if __name__ == "__main__":
     log_writer.log(file_object, "Load data started with params file: {}".format(parsed_args.config))
     load_data(config_path=parsed_args.config)
     file_object.close()
-    # eof223454545

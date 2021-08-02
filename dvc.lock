@@ -6,8 +6,8 @@ load_data:
     size: 8760608
     nfiles: 56
   - path: src/load_data.py
-    md5: 6cf43046404495039e211ed16fae37f3
-    size: 1569
+    md5: 233e8c249d50f2bf459f4b3c2457b977
+    size: 1551
   outs:
   - path: Training_Raw_Files
     md5: 94ae01702c45ffc517352ed6262da7d6.dir
@@ -21,11 +21,11 @@ validate_data:
     size: 8757191
     nfiles: 27
   - path: src/load_data.py
-    md5: 6cf43046404495039e211ed16fae37f3
-    size: 1569
+    md5: 233e8c249d50f2bf459f4b3c2457b977
+    size: 1551
   - path: src/validate_data.py
-    md5: c0271a965b626e0daf152c1cf23d6c7a
-    size: 980
+    md5: 0193e6f95c5ee713054cf771ac09ba80
+    size: 982
   outs:
   - path: Training_Raw_Files_Validated/Bad_Raw
     md5: 6dfdf1543ffbf99e539a85b4c165ec20.dir
@@ -35,3 +35,32 @@ validate_data:
     md5: 9aea4ebd01da365a7b183075fcc83b44.dir
     size: 510855
     nfiles: 2
+transform_data:
+  cmd: python src/transform_data.py --config=params.yaml
+  deps:
+  - path: Training_Raw_Files_Validated/Good_Raw
+    md5: 61b7ef2514fef8a637045d5d05fe56d9.dir
+    size: 513963
+    nfiles: 2
+  - path: src/load_data.py
+    md5: 233e8c249d50f2bf459f4b3c2457b977
+    size: 1551
+  - path: src/transform_data.py
+    md5: f39a1f91ddf775ca3af10771ca56d4ea
+    size: 1064
+insert_data:
+  cmd: python src/insert_data_to_db.py --config=params.yaml
+  deps:
+  - path: src/insert_data_to_db.py
+    md5: 9596f54c9fffd0a7c86d3ebdea4d3117
+    size: 984
+  - path: src/load_data.py
+    md5: 233e8c249d50f2bf459f4b3c2457b977
+    size: 1551
+  outs:
+  - path: Consolidated_Training_Data/InputFile.csv
+    md5: 2b497c52ba2111b706230fff9e45c2cb
+    size: 674266
+  - path: Training_Database/Training.db
+    md5: c5892527f43bb6cd7ff3b743a02997d3
+    size: 622592
