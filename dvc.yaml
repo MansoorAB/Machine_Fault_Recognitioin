@@ -33,3 +33,31 @@ stages:
       - Training_Database/Training.db
       - Consolidated_Training_Data/InputFile.csv
 
+  train_model:
+    cmd: python src/train_model.py --config=params.yaml
+    deps:
+      - Consolidated_Training_Data/InputFile.csv
+      - src/train_model.py
+    params:
+      - estimators.KNNImputer.params.n_neighbors
+      - estimators.KNNImputer.params.weights
+      - estimators.XGBoost.params.learning_rate
+      - estimators.XGBoost.params.max_depth
+      - estimators.XGBoost.params.n_estimators
+      - estimators.RandomForest.params.n_estimators
+      - estimators.RandomForest.params.criterion
+      - estimators.RandomForest.params.max_depth
+      - estimators.RandomForest.params.max_features
+      - estimators.GridSearchCV.params.verbose
+      - estimators.GridSearchCV.params.cv
+
+    metrics:
+      - Reports/params.json:
+          cache: false
+      - Reports/scores.json:
+          cache: false
+    outs:
+      - models
+
+
+

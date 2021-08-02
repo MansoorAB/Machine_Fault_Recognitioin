@@ -1,6 +1,8 @@
 base:
   project: Machine Fault Recognition
   random_state: 10
+  col_2_rmv: Wafer
+  target_col: Output
 
 data_source:
   s3_source: Training_Batch_Files
@@ -13,12 +15,44 @@ validate_data:
   raw_validated: Training_Raw_Files_Validated
   good_raw: Training_Raw_Files_Validated/Good_Raw/
   bad_raw: Training_Raw_Files_Validated/Bad_Raw/
-  raw_archived: TrainingArchiveBadData/
+  raw_archived: Training_Archive_BadData/
 
 prepare_data:
   train_db_folder: Training_Database/
   train_folder: Consolidated_Training_Data/
-  train_file: InputFile.csv
+  train_file: Consolidated_Training_Data/InputFile.csv
+
+reports:
+  null_values: Reports/null_values.csv
+  Kmeans_elbow_plot: Reports/K-Means_Elbow.PNG
+  params: Reports/params.json
+  scores: Reports/scores.json
+
+estimators:
+  KNNImputer:
+    params:
+      n_neighbors: 3
+      weights: uniform
+  XGBoost:
+    params:
+      learning_rate: [0.5, 0.1, 0.01, 0.001]
+      max_depth: [3, 5, 10, 20]
+      n_estimators: [10, 50, 100, 200]
+  RandomForest:
+    params:
+      n_estimators: [10, 50, 100, 130]
+      criterion: ['gini', 'entropy']
+      max_depth: [2, 3, 4]
+      max_features: ['auto', 'log2']
+  GridSearchCV:
+    params:
+      verbose: 2
+      cv: 5
+
+models: models
+
+split_data:
+  test_size: 0.33
 
 
 

@@ -66,7 +66,7 @@ class dBOperation:
             c.execute("SELECT count(name)  FROM sqlite_master WHERE type = 'table' AND name = 'Good_Raw_Data'")
             if c.fetchone()[0] ==1:
                 conn.close()
-                self.logger.log(self.log_file, "Tables created successfully!!")
+                self.logger.log(self.log_file, "Training table already exists!!")
                 self.logger.log(self.log_file, "Closed %s database successfully" % DatabaseName)
 
             else:
@@ -84,7 +84,7 @@ class dBOperation:
 
                 conn.close()
 
-                self.logger.log(self.log_file, "Tables created successfully!!")
+                self.logger.log(self.log_file, "Training table newly created successfully!!")
                 self.logger.log(self.log_file, "Closed %s database successfully" % DatabaseName)
 
         except Exception as e:
@@ -166,7 +166,7 @@ class dBOperation:
                 os.makedirs(self.fileFromDb)
 
             # Open CSV file for writing.
-            csvFile = csv.writer(open(self.fileFromDb + self.fileName, 'w', newline=''),delimiter=',', lineterminator='\r\n',quoting=csv.QUOTE_ALL, escapechar='\\')
+            csvFile = csv.writer(open(self.fileName, 'w', newline=''),delimiter=',', lineterminator='\r\n',quoting=csv.QUOTE_ALL, escapechar='\\')
 
             # Add the headers and data to the CSV file.
             csvFile.writerow(headers)
