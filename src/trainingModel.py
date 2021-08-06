@@ -44,7 +44,7 @@ class trainModel:
             X, Y = preprocessor.separate_label_feature(data, label_column_name=self.config['base']['target_col'])
 
             # check if missing values are present in the dataset
-            is_null_present = preprocessor.is_null_present(X)
+            is_null_present = preprocessor.is_null_present(X, True)
 
             # if missing values are there, replace them appropriately.
             if is_null_present:
@@ -55,6 +55,11 @@ class trainModel:
             # and they are giving the same output both for good and bad sensors
             # prepare the list of such columns to drop
             cols_to_drop = preprocessor.get_columns_with_zero_std_deviation(X)
+
+            f = open(self.config['reports']['cols2rmv'], 'w')
+            for col in cols_to_drop:
+                f.write(col + "\n")
+            f.close()
 
             # drop the columns obtained above
             X = preprocessor.remove_columns(X, cols_to_drop)

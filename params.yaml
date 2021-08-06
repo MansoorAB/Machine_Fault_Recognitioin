@@ -21,12 +21,14 @@ prepare_data:
   train_db_folder: Training_Database/
   train_folder: Consolidated_Training_Data/
   train_file: Consolidated_Training_Data/InputFile.csv
-
+    
 reports:
-  null_values: Reports/null_values.csv
+  null_values_train: Reports/null_values_train_data.csv
+  null_values_prediction: Reports/null_values_prediction_data.csv
   Kmeans_elbow_plot: Reports/K-Means_Elbow.PNG
   params: Reports/params.json
   scores: Reports/scores.json
+  cols2rmv: Reports/redundant_columns.txt
 
 estimators:
   KNNImputer:
@@ -49,10 +51,21 @@ estimators:
       verbose: 2
       cv: 5
 
-models: models
+models: models/
 
 split_data:
   test_size: 0.33
+
+predict_data:
+  prediction_schema: src/schema_prediction.json
+  raw_validated: Prediction_Raw_Files_Validated
+  good_raw: Prediction_Raw_Files_Validated/Good_Raw/
+  bad_raw: Prediction_Raw_Files_Validated/Bad_Raw/
+  raw_archived: Prediction_Archive_BadData/
+  prediction_db_folder: Prediction_Database/
+  prediction_folder: Consolidated_Prediction_Data/
+  prediction_file: Consolidated_Prediction_Data/InputFile.csv
+  prediction_final_file: Prediction_Output_File/Predictions.csv
 
 
 

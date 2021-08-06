@@ -1,0 +1,101 @@
+2021-08-06/16:35:27		Processing prediction initiated via web form.Prediction folder given: Prediction_Batch_files
+2021-08-06/16:35:27		Start of Validation on files for prediction!!
+2021-08-06/16:35:27		LengthOfDateStampInFile:: 8	LengthOfTimeStampInFile:: 6	 NumberOfColumns:: 591
+2021-08-06/16:35:27		Good raw validation directory created.
+2021-08-06/16:35:27		Bad raw validation directory created.
+2021-08-06/16:35:27		Valid File name!! File moved to GoodRaw Folder :: wafer_07012020_041011.csv
+2021-08-06/16:35:27		Valid File name!! File moved to GoodRaw Folder :: wafer_13012020_090817.csv
+2021-08-06/16:35:27		Invalid File Name!! File moved to Bad Raw Folder :: Wafer_13012020_141000.csv
+2021-08-06/16:35:27		Invalid File Name!! File moved to Bad Raw Folder :: Wafer_14012020_113045.csv
+2021-08-06/16:35:27		Invalid File Name!! File moved to Bad Raw Folder :: Wafer_15010_130532.csv
+2021-08-06/16:35:27		Valid File name!! File moved to GoodRaw Folder :: wafer_16012020_051629.csv
+2021-08-06/16:35:27		Valid File name!! File moved to GoodRaw Folder :: wafer_20012020_090819.csv
+2021-08-06/16:35:27		Valid File name!! File moved to GoodRaw Folder :: wafer_20022020_090716.csv
+2021-08-06/16:35:27		Valid File name!! File moved to GoodRaw Folder :: wafer_21012020_080913.csv
+2021-08-06/16:35:27		Valid File name!! File moved to GoodRaw Folder :: wafer_22022020_041119.csv
+2021-08-06/16:35:27		Valid File name!! File moved to GoodRaw Folder :: wafer_23012020_011008.csv
+2021-08-06/16:35:27		Valid File name!! File moved to GoodRaw Folder :: wafer_23012020_041211.csv
+2021-08-06/16:35:27		Valid File name!! File moved to GoodRaw Folder :: wafer_27012020_080911.csv
+2021-08-06/16:35:27		Valid File name!! File moved to GoodRaw Folder :: wafer_28012020_051011.csv
+2021-08-06/16:35:27		Valid File name!! File moved to GoodRaw Folder :: wafer_28012020_090817.csv
+2021-08-06/16:35:27		Valid File name!! File moved to GoodRaw Folder :: wafer_28042020_031911.csv
+2021-08-06/16:35:27		Valid File name!! File moved to GoodRaw Folder :: wafer_29012020_050617.csv
+2021-08-06/16:35:27		Valid File name!! File moved to GoodRaw Folder :: wafer_29012020_060756.csv
+2021-08-06/16:35:27		Valid File name!! File moved to GoodRaw Folder :: wafer_31012020_090811.csv
+2021-08-06/16:35:27		Column Length Validation Started!!
+2021-08-06/16:35:33		Column Length Validation Completed!!
+2021-08-06/16:35:33		Missing Values Validation Started!!
+2021-08-06/16:35:33		Invalid Column Length for the file!! File moved to Bad Raw Folder :: wafer_07012020_041011.csv
+2021-08-06/16:35:35		Invalid Column Length for the file!! File moved to Bad Raw Folder :: wafer_20012020_090819.csv
+2021-08-06/16:35:36		Invalid Column Length for the file!! File moved to Bad Raw Folder :: wafer_22022020_041119.csv
+2021-08-06/16:35:36		Invalid Column Length for the file!! File moved to Bad Raw Folder :: wafer_23012020_011008.csv
+2021-08-06/16:35:37		Invalid Column Length for the file!! File moved to Bad Raw Folder :: wafer_28012020_051011.csv
+2021-08-06/16:35:40		Invalid Column Length for the file!! File moved to Bad Raw Folder :: wafer_29012020_060756.csv
+2021-08-06/16:35:40		Invalid Column Length for the file!! File moved to Bad Raw Folder :: wafer_31012020_090811.csv
+2021-08-06/16:35:40		Raw Data Validation Complete!!
+2021-08-06/16:35:40		Starting Data Transformation!!
+2021-08-06/16:35:41		wafer_13012020_090817.csv: File Transformed successfully!!
+2021-08-06/16:35:42		wafer_16012020_051629.csv: File Transformed successfully!!
+2021-08-06/16:35:42		wafer_20022020_090716.csv: File Transformed successfully!!
+2021-08-06/16:35:44		wafer_21012020_080913.csv: File Transformed successfully!!
+2021-08-06/16:35:45		wafer_23012020_041211.csv: File Transformed successfully!!
+2021-08-06/16:35:46		wafer_27012020_080911.csv: File Transformed successfully!!
+2021-08-06/16:35:47		wafer_28012020_090817.csv: File Transformed successfully!!
+2021-08-06/16:35:51		wafer_28042020_031911.csv: File Transformed successfully!!
+2021-08-06/16:35:51		wafer_29012020_050617.csv: File Transformed successfully!!
+2021-08-06/16:35:51		DataTransformation Completed!!!
+2021-08-06/16:35:51		Creating Prediction_Database and tables on the basis of given schema!!!
+2021-08-06/16:35:51		Opened Prediction database successfully
+2021-08-06/16:37:56		Prediction Tables created successfully!!
+2021-08-06/16:37:56		Closed Prediction database successfully
+2021-08-06/16:37:56		Table creation Completed!!
+2021-08-06/16:37:56		Insertion of Data into Table started!!!!
+2021-08-06/16:37:56		Opened Prediction database successfully
+2021-08-06/16:38:19		 wafer_13012020_090817.csv: File loaded successfully!!
+2021-08-06/16:38:40		 wafer_16012020_051629.csv: File loaded successfully!!
+2021-08-06/16:38:47		 wafer_20022020_090716.csv: File loaded successfully!!
+2021-08-06/16:39:07		 wafer_21012020_080913.csv: File loaded successfully!!
+2021-08-06/16:39:26		 wafer_23012020_041211.csv: File loaded successfully!!
+2021-08-06/16:39:46		 wafer_27012020_080911.csv: File loaded successfully!!
+2021-08-06/16:40:08		 wafer_28012020_090817.csv: File loaded successfully!!
+2021-08-06/16:40:31		 wafer_28042020_031911.csv: File loaded successfully!!
+2021-08-06/16:40:54		 wafer_29012020_050617.csv: File loaded successfully!!
+2021-08-06/16:40:54		Insertion in Table completed!!!
+2021-08-06/16:40:54		Deleting Good Prediction Data Folder!!!
+2021-08-06/16:40:54		GoodRaw directory deleted successfully!!
+2021-08-06/16:40:54		Good_Data folder deleted!!!
+2021-08-06/16:40:54		Moving bad prediction files to Archive and deleting Bad_Data folder!!!
+2021-08-06/16:40:54		Bad files moved to archive
+2021-08-06/16:40:54		Bad Raw Data Folder Deleted successfully!!
+2021-08-06/16:40:54		Bad files moved to archive!! Bad folder Deleted!!
+2021-08-06/16:40:54		Validation Operation completed!!
+2021-08-06/16:40:54		Extracting csv file from table
+2021-08-06/16:40:54		Opened Prediction database successfully
+2021-08-06/16:40:55		Prediction consolidated file exported successfully!!!
+2021-08-06/16:40:55		Start of Prediction...
+2021-08-06/16:40:55		Entered the get_data method of the Data_Getter class
+2021-08-06/16:40:55		Data Load Successful. Exited the get_data method of the Data_Getter class
+2021-08-06/16:40:55		Entered the is_null_present method of the Preprocessor class
+2021-08-06/16:40:55		Missing values found and written to : Reports/null_values_prediction_data.csv
+2021-08-06/16:40:55		Entered the impute_missing_values method of the Preprocessor class
+2021-08-06/16:40:57		Imputing missing values Successful. Exited the impute_missing_values method of the Preprocessor class
+2021-08-06/16:40:57		Entered the remove_columns method of the Preprocessor class
+2021-08-06/16:40:57		Column removal Successful.Exited the remove_columns method of the Preprocessor class
+2021-08-06/16:40:57		Entered the load_model method of the File_Operation class
+2021-08-06/16:40:57		Model File KMeans loaded. Exited the load_model method of the Model_Finder class
+2021-08-06/16:40:57		Entered the find_correct_model_file method of the File_Operation class
+2021-08-06/16:40:57		Best model for cluster 0 is RandomForest0
+2021-08-06/16:40:57		Exited the find_correct_model_file method of the Model_Finder class. Returned: RandomForest0
+2021-08-06/16:40:57		Entered the load_model method of the File_Operation class
+2021-08-06/16:40:57		Model File RandomForest0 loaded. Exited the load_model method of the Model_Finder class
+2021-08-06/16:40:57		Entered the find_correct_model_file method of the File_Operation class
+2021-08-06/16:40:57		Best model for cluster 2 is XGBoost2
+2021-08-06/16:40:57		Exited the find_correct_model_file method of the Model_Finder class. Returned: XGBoost2
+2021-08-06/16:40:57		Entered the load_model method of the File_Operation class
+2021-08-06/16:40:57		Model File XGBoost2 loaded. Exited the load_model method of the Model_Finder class
+2021-08-06/16:40:58		Entered the find_correct_model_file method of the File_Operation class
+2021-08-06/16:40:58		Best model for cluster 1 is XGBoost1
+2021-08-06/16:40:58		Exited the find_correct_model_file method of the Model_Finder class. Returned: XGBoost1
+2021-08-06/16:40:58		Entered the load_model method of the File_Operation class
+2021-08-06/16:40:58		Model File XGBoost1 loaded. Exited the load_model method of the Model_Finder class
+2021-08-06/16:40:58		End of Prediction

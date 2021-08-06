@@ -69,10 +69,11 @@ class Preprocessor:
             self.logger_object.log(self.file_object, 'Label Separation Unsuccessful. Exited the separate_label_feature method of the Preprocessor class')
             raise Exception()
 
-    def is_null_present(self,data):
+    def is_null_present(self, data, prep_training=False):
         """
                                 Method Name: is_null_present
                                 Description: This method checks whether there are null values present in the pandas Dataframe or not.
+                                             prep_training to tell if running for training or prediction. Different reports are created based on this.
                                 Output: Returns a Boolean Value. True if null values are present in the DataFrame, False if they are not present.
                                 On Failure: Raise Exception
 
@@ -84,11 +85,13 @@ class Preprocessor:
         self.logger_object.log(self.file_object, 'Entered the is_null_present method of the Preprocessor class')
         self.null_present = False
         try:
-            if os.path.isdir('Reports'):
+
+            if prep_training and os.path.exists('Reports'):
                 shutil.rmtree('Reports')
 
             os.makedirs('Reports', exist_ok=True)
-            self.null_counts=data.isna().sum() # check for the count of null values per column
+            self.null_counts = data.isna().sum() # check for the count of null values per column
+
             for i in self.null_counts:
                 if i>0:
                     self.null_present=True
@@ -97,10 +100,14 @@ class Preprocessor:
                 dataframe_with_null = pd.DataFrame()
                 dataframe_with_null['columns'] = data.columns
                 dataframe_with_null['missing values count'] = np.asarray(data.isna().sum())
-                dataframe_with_null.to_csv(self.config['reports']['null_values'])
+                if prep_training:
+                    null_report = self.config['reports']['null_values_train']
+                else:
+                    null_report = self.config['reports']['null_values_prediction']
+                dataframe_with_null.to_csv(null_report)
                 # storing the null column information to file
             self.logger_object.log(self.file_object,
-                                   'Missing values found and written to : %s' % self.config['reports']['null_values'])
+                                   'Missing values found and written to : %s' % null_report)
             return self.null_present
         except Exception as e:
             self.logger_object.log(self.file_object,'Exception occured in is_null_present method of the Preprocessor class. Exception message:  ' + str(e))
@@ -128,7 +135,8 @@ class Preprocessor:
             self.new_array = imputer.fit_transform(self.data)  # impute the missing values
             # convert the nd-array returned in the step above to a Dataframe
             self.new_data = pd.DataFrame(data=self.new_array, columns=self.data.columns)
-            self.logger_object.log(self.file_object, 'Imputing missing values Successful. Exited the impute_missing_values method of the Preprocessor class')
+            self.logger_object.log(self.file_object, 'Imputing missing values Successful. '
+                                                     'Exited the impute_missing_values method of the Preprocessor class')
             return self.new_data
         except Exception as e:
             self.logger_object.log(self.file_object,'Exception occured in impute_missing_values method of the Preprocessor class. Exception message:  ' + str(e))

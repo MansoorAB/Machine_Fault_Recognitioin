@@ -51,7 +51,7 @@ class File_Operation:
                                    'Model File '+filename+' could not be saved. Exited the save_model method of the Model_Finder class')
             raise Exception()
 
-    def load_model(self,filename):
+    def load_model(self, filename):
         """
                     Method Name: load_model
                     Description: load the model file to memory
@@ -67,7 +67,8 @@ class File_Operation:
             with open(self.model_directory + filename + '/' + filename + '.sav',
                       'rb') as f:
                 self.logger_object.log(self.file_object,
-                                       'Model File ' + filename + ' loaded. Exited the load_model method of the Model_Finder class')
+                                       'Model File ' + filename + ' loaded. '
+                                       'Exited the load_model method of the Model_Finder class')
                 return pickle.load(f)
         except Exception as e:
             self.logger_object.log(self.file_object,
@@ -88,7 +89,8 @@ class File_Operation:
                             Version: 1.0
                             Revisions: None
                 """
-        self.logger_object.log(self.file_object, 'Entered the find_correct_model_file method of the File_Operation class')
+        self.logger_object.log(self.file_object, 'Entered the find_correct_model_file method'
+                                                 ' of the File_Operation class')
         try:
             self.cluster_number= cluster_number
             self.folder_name=self.model_directory
@@ -96,13 +98,16 @@ class File_Operation:
             self.list_of_files = os.listdir(self.folder_name)
             for self.file in self.list_of_files:
                 try:
-                    if (self.file.index(str( self.cluster_number))!=-1):
-                        self.model_name=self.file
+                    if self.file.index(str(self.cluster_number)) != -1: # i.e. cluster num found in folder name
+                        self.model_name = self.file
                 except:
                     continue
-            self.model_name=self.model_name.split('.')[0]
+            self.logger_object.log(self.file_object, 'Best model for cluster %d is %s'
+                                   % (cluster_number, self.model_name))
+            self.model_name = self.model_name.split('.')[0]
             self.logger_object.log(self.file_object,
-                                   'Exited the find_correct_model_file method of the Model_Finder class.')
+                                   'Exited the find_correct_model_file method of the Model_Finder class. '
+                                   'Returned: %s' % self.model_name)
             return self.model_name
         except Exception as e:
             self.logger_object.log(self.file_object,

@@ -203,7 +203,7 @@ class Model_Finder:
                     "XGBoost Score": self.xgboost_score,
                     "RF Score": self.random_forest_score
                 }
-                self.logger_object.log(self.file_object, 'Writing scores for cluster: %d' % cn)
+                self.logger_object.log(self.file_object, 'Writing scores for cluster: %d' % cluster_num)
                 json.dump(scores, f, indent=4)
                 f.write('\n')
 

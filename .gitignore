@@ -1,6 +1,9 @@
-/Training_Raw_Files
+Training_Raw_Files/
 /test.py
-/Training_Archive_BadData
+Training_Archive_BadData/
 /dist
 /src.egg-info
 /build
+Prediction_Database/Prediction.db
+Consolidated_Prediction_Data/InputFile.csv
+/Training_Raw_Files
