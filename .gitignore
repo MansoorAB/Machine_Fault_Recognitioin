@@ -5,5 +5,6 @@ Training_Archive_BadData/
 /src.egg-info
 /build
 Prediction_Database/Prediction.db
-Consolidated_Prediction_Data/InputFile.csv
+Consolidated_Prediction_Data/
 /Training_Raw_Files
+Prediction_Archive_BadData/
