@@ -7,7 +7,7 @@ import flask_monitoringdashboard as dashboard
 import sys
 print('path before: ', sys.path)
 # sys.path.append(os.path.join(sys.path[0], 'src'))  # for local deployment
-sys.path.append('src')  # for heroku deployment
+sys.path.append('/src')  # for heroku deployment
 print('path after: ', sys.path)
 
 from prediction_service.prediction import ModelPrediction
