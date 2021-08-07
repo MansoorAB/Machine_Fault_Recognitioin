@@ -5,7 +5,8 @@ from flask_cors import CORS, cross_origin
 import flask_monitoringdashboard as dashboard
 
 import sys
-sys.path.append(os.path.join(sys.path[0], 'src'))
+print("sys.path is " + sys.path[0])
+print(sys.path.append(os.path.join(sys.path[0], 'src')))
 from prediction_service.prediction import ModelPrediction
 
 webapp_root = "webapp"
