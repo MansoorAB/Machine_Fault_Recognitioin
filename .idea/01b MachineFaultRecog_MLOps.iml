@@ -5,7 +5,7 @@
       <sourceFolder url="file://$MODULE_DIR$/src" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/prediction_service" isTestSource="false" />
     </content>
-    <orderEntry type="jdk" jdkName="Python 3.6 (MachFaultMLOps) (13)" jdkType="Python SDK" />
+    <orderEntry type="jdk" jdkName="Python 3.6 (MachFaultMLOps) (14)" jdkType="Python SDK" />
     <orderEntry type="sourceFolder" forTests="false" />
   </component>
 </module>
