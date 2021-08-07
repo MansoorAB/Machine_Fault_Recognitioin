@@ -1,7 +1,6 @@
 Training_Raw_Files/
 /test.py
 Training_Archive_BadData/
-/dist
 /src.egg-info
 /build
 Prediction_Database/Prediction.db
