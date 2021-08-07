@@ -5,10 +5,10 @@ from flask_cors import CORS, cross_origin
 import flask_monitoringdashboard as dashboard
 
 import sys
-sys.path.append(os.path.join(sys.path[0], 'src'))
 from prediction_service.prediction import ModelPrediction
 
-webapp_root = "webapp"
+# Note: This file is inside src/ - thus add ../ to webapp_root and prediction_logs folder
+webapp_root = "../webapp"
 
 static_dir = os.path.join(webapp_root, "static")
 template_dir = os.path.join(webapp_root, "templates")
@@ -31,11 +31,11 @@ def home():
 def predictWaferStatus():
 
     # Create Prediction Logs for the current run
-    if os.path.exists('Prediction_Logs'):
-        shutil.rmtree('Prediction_Logs')
+    if os.path.exists('../Prediction_Logs'):
+        shutil.rmtree('../Prediction_Logs')
 
-    os.makedirs('Prediction_Logs')
-    log_file = open("Prediction_Logs/Prediction_Main_Log.txt", "w")
+    os.makedirs('../Prediction_Logs')
+    log_file = open("../Prediction_Logs/Prediction_Main_Log.txt", "w")
 
     modelPredObj = ModelPrediction(log_file)
 

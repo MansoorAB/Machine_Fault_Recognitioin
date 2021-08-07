@@ -3,8 +3,6 @@ import os
 import json
 from flask import Response
 
-import sys
-sys.path.append(os.path.join(sys.path[0], 'src'))
 from application_logging import logger
 from prediction_Validation_Insertion import pred_validation
 from predictFromModel import model_prediction
