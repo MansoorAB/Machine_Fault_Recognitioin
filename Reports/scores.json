@@ -1,15 +1,15 @@
 {
-    "cluster#": 0,
+    "cluster#": 1,
     "XGBoost Score": 0.5,
     "RF Score": 0.5
 }
 {
     "cluster#": 2,
     "XGBoost Score": 0.5,
-    "RF Score": 0.48333333333333334
+    "RF Score": 0.5
 }
 {
-    "cluster#": 1,
+    "cluster#": 0,
     "XGBoost Score": 0.625,
     "RF Score": 0.5
 }

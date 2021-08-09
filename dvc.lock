@@ -97,11 +97,11 @@ train_model:
       - 200
   outs:
   - path: Reports/params.json
-    md5: 6f810bb5cf3ebeadaa00648b58b4736a
+    md5: 71a7a6b6e1b42f221529ae84d5556ca5
     size: 843
   - path: Reports/scores.json
-    md5: 1fe07022c01dd28149eef4ca88ff1977
-    size: 240
+    md5: 6191a7ce41dcb92370ed2d58221ad5cc
+    size: 224
 test_run:
   cmd: python test.py
   deps:

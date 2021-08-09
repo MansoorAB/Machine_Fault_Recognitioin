@@ -70,6 +70,7 @@ class KMeansClustering:
         self.logger_object.log(self.file_object, 'Entered the create_clusters method of the KMeansClustering class')
         self.data=data
         try:
+            km = KMeans()
             self.kmeans = KMeans(n_clusters=number_of_clusters, init='k-means++', random_state=self.config['base']['random_state'])
             self.y_kmeans = self.kmeans.fit_predict(data) #  divide data into clusters
 
