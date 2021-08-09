@@ -15,10 +15,10 @@ kneed==0.5.1
 MarkupSafe==1.1.1
 matplotlib==3.1.2
 more-itertools==8.1.0
-numpy==1.18.1
-pandas==0.25.3
-#numpy
-#pandas
+#numpy==1.18.1
+#pandas==0.25.3
+numpy
+pandas
 pyparsing==2.4.6
 pyrsistent==0.15.7
 python-dateutil==2.8.1
