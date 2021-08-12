@@ -40,9 +40,9 @@ class dBOperation:
         try:
             dbFolder = self.config['predict_data']['prediction_db_folder']
             os.makedirs(dbFolder, exist_ok=True)
-            # conn = sqlite3.connect(dbFolder + DatabaseName + '.db')
+            conn = sqlite3.connect(dbFolder + DatabaseName + '.db')
             # VACUUM needs isolation level None for python 3.6 due to a bug
-            conn = sqlite3.connect(dbFolder + DatabaseName+'.db', isolation_level=None)
+            # conn = sqlite3.connect(dbFolder + DatabaseName+'.db', isolation_level=None)
             self.logger.log(self.log_file, "Opened %s database successfully" % DatabaseName)
         except ConnectionError:
             self.logger.log(self.log_file, "Error while connecting to database: %s" % ConnectionError)
@@ -67,19 +67,19 @@ class dBOperation:
 
             # To save execution time on local machine, table DROP is commented and only data is deleted
 
-            # conn.execute('DROP TABLE IF EXISTS Good_Raw_Data;')
-            conn.execute('DELETE FROM Good_Raw_Data;')
-            conn.execute('VACUUM')
-            conn.commit()
+            conn.execute('DROP TABLE IF EXISTS Good_Raw_Data;')
+            # conn.execute('DELETE FROM Good_Raw_Data;')
+            # conn.execute('VACUUM')
+            # conn.commit()
 
             # Uncomment this for loop if table is getting dropped
-            # for key in column_names.keys():
-            #     type = column_names[key]
-            #
-            #     try:
-            #         conn.execute('ALTER TABLE Good_Raw_Data ADD COLUMN "{column_name}" {dataType}'.format(column_name=key, dataType=type))
-            #     except:
-            #         conn.execute('CREATE TABLE  Good_Raw_Data ({column_name} {dataType})'.format(column_name=key, dataType=type))
+            for key in column_names.keys():
+                type = column_names[key]
+
+                try:
+                    conn.execute('ALTER TABLE Good_Raw_Data ADD COLUMN "{column_name}" {dataType}'.format(column_name=key, dataType=type))
+                except:
+                    conn.execute('CREATE TABLE  Good_Raw_Data ({column_name} {dataType})'.format(column_name=key, dataType=type))
 
             conn.close()
 

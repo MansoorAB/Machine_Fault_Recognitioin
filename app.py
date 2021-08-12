@@ -44,6 +44,7 @@ def predictWaferStatus():
     try:
         if request.form:
             dict_req = dict(request.form)
+            print('input is: ', dict_req)
             response = modelPredObj.form_response(dict_req)
             return response
         elif request.json:
