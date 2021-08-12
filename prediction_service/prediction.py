@@ -31,8 +31,8 @@ class ModelPrediction:
             config = self.read_params()
 
             # Validate the Prediction Files given
-            # pred_val = pred_validation(path, config, self.log_file)
-            # pred_val.prediction_validation()
+            pred_val = pred_validation(path, config, self.log_file)
+            pred_val.prediction_validation()
 
             # Make prediction on the consolidated prediction file
             make_pred = model_prediction(path, config, self.log_file)
