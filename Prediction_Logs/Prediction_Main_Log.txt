@@ -1,28 +1,28 @@
-2021-08-09/11:19:43		Processing prediction initiated via web form.Prediction folder given: Prediction_Batch_Files
-2021-08-09/11:19:43		Start of Prediction...
-2021-08-09/11:19:43		Entered the get_data method of the Data_Getter class
-2021-08-09/11:19:44		Data Load Successful. Exited the get_data method of the Data_Getter class
-2021-08-09/11:19:44		Entered the is_null_present method of the Preprocessor class
-2021-08-09/11:19:45		Missing values found and written to : Reports/null_values_prediction_data.csv
-2021-08-09/11:19:45		Entered the impute_missing_values method of the Preprocessor class
-2021-08-09/11:19:47		Imputing missing values Successful. Exited the impute_missing_values method of the Preprocessor class
-2021-08-09/11:19:47		Entered the remove_columns method of the Preprocessor class
-2021-08-09/11:19:47		Column removal Successful.Exited the remove_columns method of the Preprocessor class
-2021-08-09/11:19:47		Entered the load_model method of the File_Operation class
-2021-08-09/11:19:47		Model File KMeans loaded. Exited the load_model method of the Model_Finder class
-2021-08-09/11:19:53		Entered the find_correct_model_file method of the File_Operation class
-2021-08-09/11:19:53		Best model for cluster 0 is RandomForest0
-2021-08-09/11:19:53		Exited the find_correct_model_file method of the Model_Finder class. Returned: RandomForest0
-2021-08-09/11:19:53		Entered the load_model method of the File_Operation class
-2021-08-09/11:19:53		Model File RandomForest0 loaded. Exited the load_model method of the Model_Finder class
-2021-08-09/11:19:54		Entered the find_correct_model_file method of the File_Operation class
-2021-08-09/11:19:54		Best model for cluster 2 is XGBoost2
-2021-08-09/11:19:54		Exited the find_correct_model_file method of the Model_Finder class. Returned: XGBoost2
-2021-08-09/11:19:54		Entered the load_model method of the File_Operation class
-2021-08-09/11:19:54		Model File XGBoost2 loaded. Exited the load_model method of the Model_Finder class
-2021-08-09/11:19:58		Entered the find_correct_model_file method of the File_Operation class
-2021-08-09/11:19:58		Best model for cluster 1 is XGBoost1
-2021-08-09/11:19:58		Exited the find_correct_model_file method of the Model_Finder class. Returned: XGBoost1
-2021-08-09/11:19:58		Entered the load_model method of the File_Operation class
-2021-08-09/11:19:58		Model File XGBoost1 loaded. Exited the load_model method of the Model_Finder class
-2021-08-09/11:19:58		End of Prediction
+2021-08-12/16:51:38		Processing prediction initiated via web form.Prediction folder given: Prediction_Batch_Files
+2021-08-12/16:51:38		Start of Prediction...
+2021-08-12/16:51:38		Entered the get_data method of the Data_Getter class
+2021-08-12/16:51:39		Data Load Successful. Exited the get_data method of the Data_Getter class
+2021-08-12/16:51:39		Entered the is_null_present method of the Preprocessor class
+2021-08-12/16:51:39		Missing values found and written to : Reports/null_values_prediction_data.csv
+2021-08-12/16:51:39		Entered the impute_missing_values method of the Preprocessor class
+2021-08-12/16:51:41		Imputing missing values Successful. Exited the impute_missing_values method of the Preprocessor class
+2021-08-12/16:51:41		Entered the remove_columns method of the Preprocessor class
+2021-08-12/16:51:41		Column removal Successful.Exited the remove_columns method of the Preprocessor class
+2021-08-12/16:51:41		Entered the load_model method of the File_Operation class
+2021-08-12/16:51:41		Model File KMeans loaded. Exited the load_model method of the Model_Finder class
+2021-08-12/16:51:43		Entered the find_correct_model_file method of the File_Operation class
+2021-08-12/16:51:43		Best model for cluster 1 is RandomForest1
+2021-08-12/16:51:43		Exited the find_correct_model_file method of the Model_Finder class. Returned: RandomForest1
+2021-08-12/16:51:43		Entered the load_model method of the File_Operation class
+2021-08-12/16:51:44		Model File RandomForest1 loaded. Exited the load_model method of the Model_Finder class
+2021-08-12/16:51:44		Entered the find_correct_model_file method of the File_Operation class
+2021-08-12/16:51:44		Best model for cluster 2 is RandomForest2
+2021-08-12/16:51:44		Exited the find_correct_model_file method of the Model_Finder class. Returned: RandomForest2
+2021-08-12/16:51:44		Entered the load_model method of the File_Operation class
+2021-08-12/16:51:44		Model File RandomForest2 loaded. Exited the load_model method of the Model_Finder class
+2021-08-12/16:51:44		Entered the find_correct_model_file method of the File_Operation class
+2021-08-12/16:51:44		Best model for cluster 0 is XGBoost0
+2021-08-12/16:51:44		Exited the find_correct_model_file method of the Model_Finder class. Returned: XGBoost0
+2021-08-12/16:51:44		Entered the load_model method of the File_Operation class
+2021-08-12/16:51:44		Model File XGBoost0 loaded. Exited the load_model method of the Model_Finder class
+2021-08-12/16:51:45		End of Prediction
