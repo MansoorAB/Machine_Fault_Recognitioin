@@ -79,7 +79,6 @@ class S3Methods:
 
         try:
             prefix = subdir if subdir[-1] == '/' else subdir + '/'
-            print('prefix: ', prefix)
 
             if save_to_root:
                 shutil.rmtree(root_dir, ignore_errors=True)
@@ -95,7 +94,6 @@ class S3Methods:
 
             fcount = 0
             for object in bucket.objects.filter(Prefix=prefix):
-                print('object.key: ', object.key)
                 if object.key == prefix:
                     os.makedirs(local_save_folder, exist_ok=True)
                     continue
@@ -146,7 +144,6 @@ class S3Methods:
             downloaded_subdir = []
             fcount = 0
             for object in bucket.objects.all():
-                print(object.key)
                 if object.key[-1] != '/':
                     if object.key.find('/') == -1:  # This is a file
                         local_file = local + self.separator + object.key
@@ -156,7 +153,6 @@ class S3Methods:
                         fcount += 1
                     else:
                         subdir = object.key.split('/')[0]
-                        print('subdir: ', subdir)
                         if subdir not in downloaded_subdir:
                             self.get_s3_folder_data_to_local(bucket_name, subdir, local)
                             downloaded_subdir.append(subdir)
@@ -176,9 +172,7 @@ class S3Methods:
             for subdir, dirs, files in os.walk(local):
                 for dir_ in dirs:
                     self.s3_client.put_object(Bucket=bucket_name, Key=dir_ + "/")
-                    print('* ', dir_)
                 for file in files:
-                    print('** ', subdir, file)
                     if subdir == local:  # this is a file
                         local_file = os.path.join(local, file)
                         self.s3_resource.Bucket(bucket_name).upload_file(Filename=local_file, Key=file)
@@ -187,7 +181,6 @@ class S3Methods:
                                                % (file, bucket_name))
                     else:
                         sd = subdir.split(self.separator)[1]
-                        print('sd: ', sd)
                         destination = sd + '/' + file
                         local_file = local + '/' + destination
                         self.s3_resource.Bucket(bucket_name).upload_file(Filename=local_file, Key=destination)

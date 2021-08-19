@@ -81,7 +81,7 @@ class model_prediction:
             s3m_object.upload_single_local_file_to_s3(self.config['s3_info']['reports_bucket'],
                                                       self.config['reports']['null_values_prediction'])
             s3m_object.upload_single_local_file_to_s3(self.config['s3_info']['reports_bucket'],
-                                                      op_file)
+                                                      op_file, True)
 
             op_url = 'https://wafer-reports.s3.us-east-2.amazonaws.com/Predictions.csv'
 
