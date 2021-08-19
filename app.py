@@ -3,6 +3,7 @@ import os
 import shutil
 from flask_cors import CORS, cross_origin
 import flask_monitoringdashboard as dashboard
+import myconfig
 
 import sys
 # sys.path.append(os.path.join(sys.path[0], 'src'))  # for local deployment
@@ -40,9 +41,9 @@ def predictWaferStatus():
     log_file = open("Prediction_Logs/Prediction_Main_Log.txt", "w")
 
     # set AWS S3 environment variables here
-    os.environ["AWS_DEFAULT_REGION"] = 'us-east-2'
-    os.environ["AWS_ACCESS_KEY_ID"] = 'AKIAWPRKS2KYDBRT3CC4'
-    os.environ["AWS_SECRET_ACCESS_KEY"] = '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'
+    os.environ["AWS_DEFAULT_REGION"] = myconfig.aws_region
+    os.environ["AWS_ACCESS_KEY_ID"] = myconfig.aws_access_key_id
+    os.environ["AWS_SECRET_ACCESS_KEY"] = myconfig.aws_secret_access_key
 
     # Invoking the prediction object
     modelPredObj = ModelPrediction(log_file)

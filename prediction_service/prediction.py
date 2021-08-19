@@ -50,15 +50,15 @@ class ModelPrediction:
             return Response(message)
         else:
             # create a directory by name path (provided by user) and get s3 prediction data over there
-            # print(datetime.now(), 'starting to fetch s3 data')
+            print(datetime.now(), 'starting to fetch s3 data')
             self.get_s3_data(path)
-            # print(datetime.now(), 'end of fetch s3 data')
+            print(datetime.now(), 'end of fetch s3 data')
 
             # Validate the Prediction Files given
             pred_val = pred_validation(path, self.config, self.log_file)
             pred_val.prediction_validation()
 
-            # print(datetime.now(), 'End of validation')
+            print(datetime.now(), 'End of validation')
 
             shutil.rmtree(path)  # removing prediction folder as consolidated file is prepared
             self.log_writer.log(self.log_file, 'Removed the local folder %s that held prediction input files' % path)

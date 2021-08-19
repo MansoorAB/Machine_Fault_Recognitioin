@@ -4,4 +4,5 @@ Training_Archive_BadData/
 /src.egg-info
 /build
 Prediction_Archive_BadData/
-
+src/myconfig.py
+/Training_Raw_Files

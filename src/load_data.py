@@ -8,6 +8,7 @@ import os
 import shutil
 from application_logging import logger
 from s3_operations import s3_methods
+import myconfig
 
 def read_params(config_path):
     with open(config_path) as yaml_file:
@@ -37,9 +38,10 @@ if __name__ == "__main__":
     args.add_argument("--config", default="params.yaml")
     parsed_args = args.parse_args()
 
-    os.environ["AWS_DEFAULT_REGION"] = 'us-east-2'
-    os.environ["AWS_ACCESS_KEY_ID"] = 'AKIAWPRKS2KYDBRT3CC4'
-    os.environ["AWS_SECRET_ACCESS_KEY"] = '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'
+    # set AWS S3 environment variables here
+    os.environ["AWS_DEFAULT_REGION"] = myconfig.aws_region
+    os.environ["AWS_ACCESS_KEY_ID"] = myconfig.aws_access_key_id
+    os.environ["AWS_SECRET_ACCESS_KEY"] = myconfig.aws_secret_access_key
 
     log_writer.log(file_object, "Load data started with params file: {}".format(parsed_args.config))
     load_data(config_path=parsed_args.config)
