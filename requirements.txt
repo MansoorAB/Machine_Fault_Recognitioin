@@ -39,4 +39,5 @@ pytest
 tox
 flake8
 gunicorn
+boto3
 

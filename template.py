@@ -8,7 +8,6 @@ dirs = [
     "Prediction_Batch_Files",
     "Prediction_Database",
     "Prediction_Output_File",
-    "models"
 ]
 
 for dir_ in dirs:

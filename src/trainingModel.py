@@ -15,10 +15,11 @@ from data_preprocessing import preprocessing, clustering
 from best_model_finder import tuner
 from file_operations import file_methods
 from application_logging import logger
+from s3_operations import s3_methods
 import os
+import shutil
 
 #Creating the common Logging object
-
 
 class trainModel:
 
@@ -105,10 +106,21 @@ class trainModel:
 
                 # saving the best model to the directory.
                 file_op = file_methods.File_Operation(self.config, self.file_object, self.log_writer)
-                save_model = file_op.save_model(best_model, best_model_name+str(i))
+                save_model = file_op.save_model(best_model, best_model_name, i)
 
             # logging the successful Training
             self.log_writer.log(self.file_object, 'Successful End of Training')
+
+            # Exporting model files to s3 bucket and deleting local folder
+            s3m_object = s3_methods.S3Methods(self.file_object, self.log_writer)
+            bucket_name = self.config['s3_info']['models_bucket']
+            self.log_writer.log(self.file_object, 'Uploading models to s3 bucket: %s' % bucket_name)
+            s3m_object.upload_local_folder_to_s3(bucket_name, self.config['models'], True)
+
+            bucket_name = self.config['s3_info']['reports_bucket']
+            self.log_writer.log(self.file_object, 'Uploading reports to s3 bucket: %s' % bucket_name)
+            s3m_object.upload_local_folder_to_s3(bucket_name, self.config['reports']['main'])
+
             self.file_object.close()
 
         except Exception:

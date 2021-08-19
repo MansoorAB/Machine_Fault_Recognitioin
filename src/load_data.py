@@ -5,10 +5,9 @@
 import yaml
 import argparse
 import os
-import glob
 import shutil
 from application_logging import logger
-
+from s3_operations import s3_methods
 
 def read_params(config_path):
     with open(config_path) as yaml_file:
@@ -18,20 +17,12 @@ def read_params(config_path):
 
 def load_data(config_path):
     config = read_params(config_path)
-    source_data = config['data_source']['s3_source']
+    s3b = config['s3_info']['data_bucket']
+    s3bf = config['s3_info']['train_folder']
     raw_data = config['load_data']['raw_data']
 
-    if os.path.isdir(raw_data):
-        shutil.rmtree(raw_data)
-        log_writer.log(file_object, "Deleted existing directory: {}".format(raw_data))
-
-    os.makedirs(raw_data)
-    log_writer.log(file_object, "Created new directory: {}".format(raw_data))
-
-    csv_files = glob.glob(os.path.join(source_data, "*.csv"))
-    for file in csv_files:
-        shutil.copy(file, raw_data)
-        log_writer.log(file_object, "copying file {} to {}".format(file, raw_data))
+    s3m_object = s3_methods.S3Methods(file_object, log_writer)
+    s3m_object.get_s3_folder_data_to_local(s3b, s3bf, raw_data, True)
 
 
 if __name__ == "__main__":
@@ -45,6 +36,10 @@ if __name__ == "__main__":
     args = argparse.ArgumentParser()
     args.add_argument("--config", default="params.yaml")
     parsed_args = args.parse_args()
+
+    os.environ["AWS_DEFAULT_REGION"] = 'us-east-2'
+    os.environ["AWS_ACCESS_KEY_ID"] = 'AKIAWPRKS2KYDBRT3CC4'
+    os.environ["AWS_SECRET_ACCESS_KEY"] = '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'
 
     log_writer.log(file_object, "Load data started with params file: {}".format(parsed_args.config))
     load_data(config_path=parsed_args.config)

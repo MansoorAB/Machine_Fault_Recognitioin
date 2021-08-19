@@ -42,7 +42,6 @@ class KMeansClustering:
             plt.title('The Elbow Method')
             plt.xlabel('Number of clusters')
             plt.ylabel('WCSS')
-            #plt.show()
 
             plt.savefig(self.config['reports']['Kmeans_elbow_plot'])  # saving the elbow plot locally
             # finding the value of the optimum cluster programmatically
@@ -74,7 +73,7 @@ class KMeansClustering:
             self.kmeans = KMeans(n_clusters=number_of_clusters, init='k-means++', random_state=self.config['base']['random_state'])
             self.y_kmeans = self.kmeans.fit_predict(data) #  divide data into clusters
 
-            self.file_op = file_methods.File_Operation(self.config, self.file_object,self.logger_object)
+            self.file_op = file_methods.File_Operation(self.config, self.file_object, self.logger_object)
             self.save_model = self.file_op.save_model(self.kmeans, 'KMeans')
             # saving the KMeans model to directory
             # passing 'Model' as the functions need three parameters

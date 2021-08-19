@@ -5,6 +5,7 @@ from data_preprocessing import preprocessing
 from data_ingestion import data_loader_prediction
 from application_logging import logger
 from Prediction_Raw_Data_Validation.predictionDataValidation import Prediction_Data_validation
+from s3_operations import s3_methods
 
 
 class model_prediction:
@@ -42,18 +43,22 @@ class model_prediction:
             f.close()
             data = preprocessor.remove_columns(data, cols_to_drop)
 
+            # Download the trained models from Amazon s3 bucket
+            s3m_object = s3_methods.S3Methods(self.file_object, self.log_writer)
+            s3m_object.get_s3_bucket_data_to_local(self.config['s3_info']['models_bucket'], self.config['models'])
+
             # Get the KMeans clustering method saved during training
             file_loader = file_methods.File_Operation(self.config, self.file_object, self.log_writer)
             kmeans = file_loader.load_model('KMeans')
 
             # Assign clusters to the prediction data based on fetched KMeans model
-            clusters = kmeans.predict(data.drop(['Wafer'], axis=1)) # drops the first column for cluster prediction
+            clusters = kmeans.predict(data.drop(['Wafer'], axis=1))  # drops the first column for cluster prediction
             data['clusters'] = clusters
             clusters = data['clusters'].unique()
 
-            path = self.config['predict_data']['prediction_final_file']
-            if os.path.exists(path):
-                os.remove(path)
+            op_file = self.config['predict_data']['prediction_final_file']
+            if os.path.exists(op_file):
+                os.remove(op_file)
 
             # For each cluster, make the prediction based on corresponding model saved during training.
             for i in clusters:
@@ -64,16 +69,27 @@ class model_prediction:
                 cluster_data = data.drop(labels=['Wafer'], axis=1)
                 cluster_data = cluster_data.drop(['clusters'], axis=1)
 
-                model_name = file_loader.find_correct_model_file(i)
-                model = file_loader.load_model(model_name)
+                # model_name = file_loader.find_correct_model_file(i)
+                # model = file_loader.load_model(model_name)
+                model = file_loader.get_cluster_model_file(i)
                 result = list(model.predict(cluster_data))
                 result = pd.DataFrame(list(zip(wafer_names, result)), columns=['Wafer', 'Prediction'])
-                result.to_csv(path, header=True, mode='a+', index=False)
+                result.to_csv(op_file, header=True, mode='a+', index=False)
             self.log_writer.log(self.file_object, 'End of Prediction')
+
+            # Upload the null values report and output prediction to s3 bucket
+            s3m_object.upload_single_local_file_to_s3(self.config['s3_info']['reports_bucket'],
+                                                      self.config['reports']['null_values_prediction'])
+            s3m_object.upload_single_local_file_to_s3(self.config['s3_info']['reports_bucket'],
+                                                      op_file)
+
+            op_url = 'https://wafer-reports.s3.us-east-2.amazonaws.com/Predictions.csv'
+
         except Exception as ex:
             self.log_writer.log(self.file_object, 'Error occurred while running the prediction!! Error:: %s' % ex)
             raise ex
-        return path, result.head().to_json(orient="records")
+
+        return op_url, result.head().to_json(orient="records")
 
 
 

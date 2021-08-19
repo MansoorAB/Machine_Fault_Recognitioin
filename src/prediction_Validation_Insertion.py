@@ -45,15 +45,16 @@ class pred_validation:
                                                   "on the basis of given schema!!!")
             # create database with given name, if present open the connection!
             # Create table with columns given in schema
-            print(datetime.now(), 'calling create table service')
+            print(datetime.now(), 'start of prediction table creation')
             self.dBOperation.createTableDb('Prediction', column_names)
             self.log_writer.log(self.file_object, "Table creation Completed!!")
-            print(datetime.now(), 'calling insert table')
+            print(datetime.now(), 'start of insertion to table')
             self.log_writer.log(self.file_object, "Insertion of Data into Table started!!!!")
             # insert csv files in the table
             self.dBOperation.insertIntoTableGoodData('Prediction')
             self.log_writer.log(self.file_object,"Insertion in Table completed!!!")
-            print(datetime.now(), 'Insert table complete now.')
+            print(datetime.now(), 'end of insertion to table')
+
             self.log_writer.log(self.file_object, "Deleting Good Prediction Data Folder!!!")
             # Delete the good data folder after loading files in table
             self.raw_data.deleteExistingGoodDataPredictionFolder()

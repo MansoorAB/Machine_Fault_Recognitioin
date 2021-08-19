@@ -41,8 +41,6 @@ class dBOperation:
             dbFolder = self.config['predict_data']['prediction_db_folder']
             os.makedirs(dbFolder, exist_ok=True)
             conn = sqlite3.connect(dbFolder + DatabaseName + '.db')
-            # VACUUM needs isolation level None for python 3.6 due to a bug
-            # conn = sqlite3.connect(dbFolder + DatabaseName+'.db', isolation_level=None)
             self.logger.log(self.log_file, "Opened %s database successfully" % DatabaseName)
         except ConnectionError:
             self.logger.log(self.log_file, "Error while connecting to database: %s" % ConnectionError)
@@ -68,11 +66,7 @@ class dBOperation:
             # To save execution time on local machine, table DROP is commented and only data is deleted
 
             conn.execute('DROP TABLE IF EXISTS Good_Raw_Data;')
-            # conn.execute('DELETE FROM Good_Raw_Data;')
-            # conn.execute('VACUUM')
-            # conn.commit()
 
-            # Uncomment this for loop if table is getting dropped
             for key in column_names.keys():
                 type = column_names[key]
 
@@ -165,7 +159,7 @@ class dBOperation:
                 os.makedirs(self.config['predict_data']['prediction_folder'])
 
             # Open CSV file for writing.
-            csvFile = csv.writer(open(self.config['predict_data']['prediction_file'], 'w', newline=''),delimiter=',', lineterminator='\r\n',quoting=csv.QUOTE_ALL, escapechar='\\')
+            csvFile = csv.writer(open(self.config['predict_data']['prediction_file'], 'w', newline=''), delimiter=',', lineterminator='\r\n',quoting=csv.QUOTE_ALL, escapechar='\\')
 
             # Add the headers and data to the CSV file.
             csvFile.writerow(headers)

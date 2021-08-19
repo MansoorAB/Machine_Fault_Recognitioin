@@ -18,7 +18,7 @@ class File_Operation:
         self.logger_object = logger_object
         self.model_directory = config['models']
 
-    def save_model(self,model,filename):
+    def save_model(self, model, model_name, cn=9999):
         """
             Method Name: save_model
             Description: Save the model file to directory
@@ -31,24 +31,31 @@ class File_Operation:
 """
         self.logger_object.log(self.file_object, 'Entered the save_model method of the File_Operation class')
         try:
-            path = os.path.join(self.model_directory, filename) #create seperate directory for each cluster
-            if os.path.isdir(path): #remove previously existing models for each clusters
-                shutil.rmtree(self.model_directory)
-                os.makedirs(path)
-            else:
-                os.makedirs(path)
 
-            with open(path +'/' + filename+'.sav',
-                      'wb') as f:
-                pickle.dump(model, f) # save the model to file
-            self.logger_object.log(self.file_object,
-                                   'Model File '+filename+' saved. Exited the save_model method of the Model_Finder class')
+            if cn == 9999:
+                path = os.path.join(self.model_directory, model_name)
+            else:
+                # create separate directory for each cluster
+                path = os.path.join(self.model_directory, 'Cluster'+str(cn))
+                model_name = model_name+str(cn)
+
+            # remove previously existing models directory
+            if os.path.isdir(path):
+                shutil.rmtree(path)
+
+            # make a new directory
+            os.makedirs(path)
+
+            with open(path + '/' + model_name + '.sav', 'wb') as f:
+                pickle.dump(model, f)  # save the model to file
+            self.logger_object.log(self.file_object, 'Model File '+ model_name+' saved. '
+                                                     'Exited the save_model method of the Model_Finder class')
 
             return 'success'
         except Exception as e:
             self.logger_object.log(self.file_object,'Exception occured in save_model method of the Model_Finder class. Exception message:  ' + str(e))
             self.logger_object.log(self.file_object,
-                                   'Model File '+filename+' could not be saved. Exited the save_model method of the Model_Finder class')
+                                   'Model File '+model_name+' could not be saved. Exited the save_model method of the Model_Finder class')
             raise Exception()
 
     def load_model(self, filename):
@@ -116,3 +123,33 @@ class File_Operation:
             self.logger_object.log(self.file_object,
                                    'Exited the find_correct_model_file method of the Model_Finder class with Failure')
             raise Exception()
+
+    def get_cluster_model_file(self,cluster_number):
+        """
+                            Method Name: get_cluster_model_file
+                            Description: For a given cluster, this method returns the model pickle file
+                            Output: The Model file
+                            On Failure: Raise Exception
+
+                            Written By: Mansoor Baig
+                            Version: 1.0
+                            Revisions: None
+                """
+        self.logger_object.log(self.file_object, 'Entered the get_cluster_model_file method'
+                                                 ' of the File_Operation class')
+        try:
+            model_folder = self.model_directory + 'Cluster' + str(cluster_number)
+            model_file = os.listdir(model_folder)[0]
+
+            with open(model_folder + '/' + model_file, 'rb') as f:
+                self.logger_object.log(self.file_object,
+                                       'Model file: %s for cluster: %d loaded successfully.'
+                                       % (model_file, cluster_number))
+                return pickle.load(f)
+        except Exception as e:
+            self.logger_object.log(self.file_object,
+                                   'Exception: %s occurred while loading model file for cluster: %d'
+                                   % (e, cluster_number))
+            raise Exception()
+
+

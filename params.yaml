@@ -4,8 +4,13 @@ base:
   col_2_rmv: Wafer
   target_col: Output
 
-data_source:
-  s3_source: Training_Batch_Files
+s3_info:
+  data_bucket: wafer-data
+  train_folder: historical-data/
+  pred_folder: current-data/
+  models_bucket: wafer-models
+  output_bucket: wafer-output
+  reports_bucket: wafer-reports
 
 load_data:
   raw_data: Training_Raw_Files
@@ -23,6 +28,7 @@ prepare_data:
   train_file: Consolidated_Training_Data/InputFile.csv
     
 reports:
+  main: Reports/
   null_values_train: Reports/null_values_train_data.csv
   null_values_prediction: Reports/null_values_prediction_data.csv
   Kmeans_elbow_plot: Reports/K-Means_Elbow.PNG
