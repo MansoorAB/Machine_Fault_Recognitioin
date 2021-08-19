@@ -2,8 +2,8 @@ load_data:
   cmd: python src/load_data.py --config=params.yaml
   deps:
   - path: src/load_data.py
-    md5: 64e3fef1750c2f18c69952bb25ef7668
-    size: 1532
+    md5: 0f968aa5ba9361f6b221c36844803d3b
+    size: 1417
   outs:
   - path: Training_Raw_Files
     md5: e56894b0812b99797276021d14dbaf75.dir
