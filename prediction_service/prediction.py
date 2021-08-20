@@ -64,7 +64,7 @@ class ModelPrediction:
 
             print(datetime.now(), 'End of validation, starting prediction...')
 
-            shutil.rmtree(path)  # removing prediction folder as consolidated file is prepared
+            shutil.rmtree(path, ignore_errors=True)  # removing prediction folder as consolidated file is prepared
             self.log_writer.log(self.log_file, 'Removed the local folder %s that held prediction input files' % path)
 
             # Make prediction on the consolidated prediction file
@@ -101,8 +101,8 @@ class ModelPrediction:
                 pred_val = pred_validation(path, self.config, self.log_file)
                 pred_val.prediction_validation()
 
-                shutil.rmtree(path)  # removing prediction folder as consolidated file is prepared
-                self.log_writer.log(self.file_object, 'Removed the local folder %s that held prediction input files' % path)
+                shutil.rmtree(path, ignore_errors=True)  # removing prediction folder as consolidated file is prepared
+                self.log_writer.log(self.log_file, 'Removed the local folder %s that held prediction input files' % path)
 
                 # Make prediction on the consolidated prediction file
                 print(datetime.now(), 'end of validation and start of prediction for api call')
@@ -112,6 +112,7 @@ class ModelPrediction:
                 return {'Output File url': op_path, 'Sample Predictions': json.loads(json_predictions)}
 
         except Exception as e:
+            shutil.rmtree(path, ignore_errors=True)  # removing prediction folder as consolidated file is prepared
             return {'response': str(e)}
 
 

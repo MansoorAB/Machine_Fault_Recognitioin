@@ -1,40 +1,137 @@
-2021-08-20/11:17:26		Processing prediction initiated via api call. Prediction folder given: Postman
-2021-08-20/11:17:26		Start of Prediction...
-2021-08-20/11:17:26		Entered the get_data method of the Data_Getter class
-2021-08-20/11:17:26		Data Load Successful. Exited the get_data method of the Data_Getter class
-2021-08-20/11:17:26		Entered the is_null_present method of the Preprocessor class
-2021-08-20/11:17:26		Missing values found and written to : Reports/null_values_prediction_data.csv
-2021-08-20/11:17:26		Entered the impute_missing_values method of the Preprocessor class
-2021-08-20/11:17:28		Imputing missing values Successful. Exited the impute_missing_values method of the Preprocessor class
-2021-08-20/11:17:28		Entered the remove_columns method of the Preprocessor class
-2021-08-20/11:17:28		Column removal Successful.Exited the remove_columns method of the Preprocessor class
-2021-08-20/11:17:28		Folder: models/ matching s3 download destination deleted.
-2021-08-20/11:17:28		Folder: models/ newly created, to download s3 data.
-2021-08-20/11:17:28		Downloading data from s3 bucket: wafer-models to local directory: models/
-2021-08-20/11:17:29		Downloading data from s3 bucket: wafer-models & prefix: Cluster0/ to local directory: models/Cluster0/
-2021-08-20/11:17:29		Downloaded file: Cluster0/RandomForest0.sav to models//Cluster0/RandomForest0.sav
-2021-08-20/11:17:30		Downloaded file: Cluster0/XGBoost0.sav to models//Cluster0/XGBoost0.sav
-2021-08-20/11:17:30		Successfully downloaded 2 files to models/Cluster0/ directory
-2021-08-20/11:17:30		Downloading data from s3 bucket: wafer-models & prefix: Cluster1/ to local directory: models/Cluster1/
-2021-08-20/11:17:31		Downloaded file: Cluster1/RandomForest1.sav to models//Cluster1/RandomForest1.sav
-2021-08-20/11:17:31		Downloaded file: Cluster1/XGBoost1.sav to models//Cluster1/XGBoost1.sav
-2021-08-20/11:17:31		Successfully downloaded 2 files to models/Cluster1/ directory
-2021-08-20/11:17:31		Downloading data from s3 bucket: wafer-models & prefix: Cluster2/ to local directory: models/Cluster2/
-2021-08-20/11:17:32		Downloaded file: Cluster2/RandomForest2.sav to models//Cluster2/RandomForest2.sav
-2021-08-20/11:17:32		Successfully downloaded 1 files to models/Cluster2/ directory
-2021-08-20/11:17:32		Downloading data from s3 bucket: wafer-models & prefix: KMeans/ to local directory: models/KMeans/
-2021-08-20/11:17:32		Downloaded file: KMeans/KMeans.sav to models//KMeans/KMeans.sav
-2021-08-20/11:17:32		Successfully downloaded 1 files to models/KMeans/ directory
-2021-08-20/11:17:32		Successfully downloaded 4 files to models/ directory
-2021-08-20/11:17:32		Entered the load_model method of the File_Operation class
-2021-08-20/11:17:32		Model File KMeans loaded. Exited the load_model method of the Model_Finder class
-2021-08-20/11:17:32		Entered the get_cluster_model_file method of the File_Operation class
-2021-08-20/11:17:32		Model file: RandomForest1.sav for cluster: 1 loaded successfully.
-2021-08-20/11:17:33		Entered the get_cluster_model_file method of the File_Operation class
-2021-08-20/11:17:33		Model file: RandomForest2.sav for cluster: 2 loaded successfully.
-2021-08-20/11:17:33		Entered the get_cluster_model_file method of the File_Operation class
-2021-08-20/11:17:33		Model file: RandomForest0.sav for cluster: 0 loaded successfully.
-2021-08-20/11:17:33		End of Prediction
-2021-08-20/11:17:34		file: null_values_prediction_data.csv uploaded to s3 bucket: wafer-reports
-2021-08-20/11:17:35		public read access granted to file: Predictions.csv
-2021-08-20/11:17:35		file: Predictions.csv uploaded to s3 bucket: wafer-reports
+2021-08-20/12:30:44		Processing prediction initiated via api call. Prediction folder given: Postman
+2021-08-20/12:30:46		Downloading data from s3 bucket: wafer-data & prefix: current-data/ to local directory: Postman
+2021-08-20/12:30:50		Downloaded file: current-data/Wafer_13012020_141000.csv to Postman/Wafer_13012020_141000.csv
+2021-08-20/12:30:52		Downloaded file: current-data/Wafer_14012020_113045.csv to Postman/Wafer_14012020_113045.csv
+2021-08-20/12:30:54		Downloaded file: current-data/Wafer_15010_130532.csv to Postman/Wafer_15010_130532.csv
+2021-08-20/12:30:56		Downloaded file: current-data/wafer_07012020_041011.csv to Postman/wafer_07012020_041011.csv
+2021-08-20/12:30:57		Downloaded file: current-data/wafer_13012020_090817.csv to Postman/wafer_13012020_090817.csv
+2021-08-20/12:30:59		Downloaded file: current-data/wafer_16012020_051629.csv to Postman/wafer_16012020_051629.csv
+2021-08-20/12:31:00		Downloaded file: current-data/wafer_20012020_090819.csv to Postman/wafer_20012020_090819.csv
+2021-08-20/12:31:00		Downloaded file: current-data/wafer_20022020_090716.csv to Postman/wafer_20022020_090716.csv
+2021-08-20/12:31:01		Downloaded file: current-data/wafer_21012020_080913.csv to Postman/wafer_21012020_080913.csv
+2021-08-20/12:31:02		Downloaded file: current-data/wafer_22022020_041119.csv to Postman/wafer_22022020_041119.csv
+2021-08-20/12:31:03		Downloaded file: current-data/wafer_23012020_011008.csv to Postman/wafer_23012020_011008.csv
+2021-08-20/12:31:04		Downloaded file: current-data/wafer_23012020_041211.csv to Postman/wafer_23012020_041211.csv
+2021-08-20/12:31:06		Downloaded file: current-data/wafer_27012020_080911.csv to Postman/wafer_27012020_080911.csv
+2021-08-20/12:31:07		Downloaded file: current-data/wafer_28012020_051011.csv to Postman/wafer_28012020_051011.csv
+2021-08-20/12:31:08		Downloaded file: current-data/wafer_28012020_090817.csv to Postman/wafer_28012020_090817.csv
+2021-08-20/12:31:09		Downloaded file: current-data/wafer_28042020_031911.csv to Postman/wafer_28042020_031911.csv
+2021-08-20/12:31:10		Downloaded file: current-data/wafer_29012020_050617.csv to Postman/wafer_29012020_050617.csv
+2021-08-20/12:31:11		Downloaded file: current-data/wafer_29012020_060756.csv to Postman/wafer_29012020_060756.csv
+2021-08-20/12:31:12		Downloaded file: current-data/wafer_31012020_090811.csv to Postman/wafer_31012020_090811.csv
+2021-08-20/12:31:12		Successfully downloaded 19 files to Postman directory
+2021-08-20/12:31:12		Start of Validation on files for prediction!!
+2021-08-20/12:31:12		LengthOfDateStampInFile:: 8	LengthOfTimeStampInFile:: 6	 NumberOfColumns:: 591
+2021-08-20/12:31:12		BadRaw directory deleted before starting validation!!!
+2021-08-20/12:31:12		GoodRaw directory deleted successfully!!
+2021-08-20/12:31:12		Good raw validation directory created.
+2021-08-20/12:31:12		Bad raw validation directory created.
+2021-08-20/12:31:12		Valid File name!! File moved to GoodRaw Folder :: wafer_07012020_041011.csv
+2021-08-20/12:31:12		Valid File name!! File moved to GoodRaw Folder :: wafer_13012020_090817.csv
+2021-08-20/12:31:12		Invalid File Name!! File moved to Bad Raw Folder :: Wafer_13012020_141000.csv
+2021-08-20/12:31:12		Invalid File Name!! File moved to Bad Raw Folder :: Wafer_14012020_113045.csv
+2021-08-20/12:31:12		Invalid File Name!! File moved to Bad Raw Folder :: Wafer_15010_130532.csv
+2021-08-20/12:31:12		Valid File name!! File moved to GoodRaw Folder :: wafer_16012020_051629.csv
+2021-08-20/12:31:12		Valid File name!! File moved to GoodRaw Folder :: wafer_20012020_090819.csv
+2021-08-20/12:31:12		Valid File name!! File moved to GoodRaw Folder :: wafer_20022020_090716.csv
+2021-08-20/12:31:12		Valid File name!! File moved to GoodRaw Folder :: wafer_21012020_080913.csv
+2021-08-20/12:31:12		Valid File name!! File moved to GoodRaw Folder :: wafer_22022020_041119.csv
+2021-08-20/12:31:12		Valid File name!! File moved to GoodRaw Folder :: wafer_23012020_011008.csv
+2021-08-20/12:31:12		Valid File name!! File moved to GoodRaw Folder :: wafer_23012020_041211.csv
+2021-08-20/12:31:12		Valid File name!! File moved to GoodRaw Folder :: wafer_27012020_080911.csv
+2021-08-20/12:31:12		Valid File name!! File moved to GoodRaw Folder :: wafer_28012020_051011.csv
+2021-08-20/12:31:12		Valid File name!! File moved to GoodRaw Folder :: wafer_28012020_090817.csv
+2021-08-20/12:31:12		Valid File name!! File moved to GoodRaw Folder :: wafer_28042020_031911.csv
+2021-08-20/12:31:12		Valid File name!! File moved to GoodRaw Folder :: wafer_29012020_050617.csv
+2021-08-20/12:31:12		Valid File name!! File moved to GoodRaw Folder :: wafer_29012020_060756.csv
+2021-08-20/12:31:12		Valid File name!! File moved to GoodRaw Folder :: wafer_31012020_090811.csv
+2021-08-20/12:31:12		Column Length Validation Started!!
+2021-08-20/12:31:17		Column Length Validation Completed!!
+2021-08-20/12:31:17		Missing Values Validation Started!!
+2021-08-20/12:31:17		Invalid Column Length for the file!! File moved to Bad Raw Folder :: wafer_07012020_041011.csv
+2021-08-20/12:31:18		Invalid Column Length for the file!! File moved to Bad Raw Folder :: wafer_20012020_090819.csv
+2021-08-20/12:31:19		Invalid Column Length for the file!! File moved to Bad Raw Folder :: wafer_22022020_041119.csv
+2021-08-20/12:31:19		Invalid Column Length for the file!! File moved to Bad Raw Folder :: wafer_23012020_011008.csv
+2021-08-20/12:31:20		Invalid Column Length for the file!! File moved to Bad Raw Folder :: wafer_28012020_051011.csv
+2021-08-20/12:31:22		Invalid Column Length for the file!! File moved to Bad Raw Folder :: wafer_29012020_060756.csv
+2021-08-20/12:31:22		Invalid Column Length for the file!! File moved to Bad Raw Folder :: wafer_31012020_090811.csv
+2021-08-20/12:31:22		Raw Data Validation Complete!!
+2021-08-20/12:31:22		Starting Data Transformation!!
+2021-08-20/12:31:24		wafer_13012020_090817.csv: File Transformed successfully!!
+2021-08-20/12:31:26		wafer_16012020_051629.csv: File Transformed successfully!!
+2021-08-20/12:31:27		wafer_20022020_090716.csv: File Transformed successfully!!
+2021-08-20/12:31:29		wafer_21012020_080913.csv: File Transformed successfully!!
+2021-08-20/12:31:31		wafer_23012020_041211.csv: File Transformed successfully!!
+2021-08-20/12:31:32		wafer_27012020_080911.csv: File Transformed successfully!!
+2021-08-20/12:31:35		wafer_28012020_090817.csv: File Transformed successfully!!
+2021-08-20/12:31:37		wafer_28042020_031911.csv: File Transformed successfully!!
+2021-08-20/12:31:38		wafer_29012020_050617.csv: File Transformed successfully!!
+2021-08-20/12:31:39		DataTransformation Completed!!!
+2021-08-20/12:31:39		Creating Prediction_Database and tables on the basis of given schema!!!
+2021-08-20/12:31:39		Opened Prediction database successfully
+2021-08-20/12:31:42		Prediction Tables created successfully!!
+2021-08-20/12:31:42		Closed Prediction database successfully
+2021-08-20/12:31:42		Table creation Completed!!
+2021-08-20/12:31:42		Insertion of Data into Table started!!!!
+2021-08-20/12:31:42		Opened Prediction database successfully
+2021-08-20/12:32:02		 wafer_13012020_090817.csv: File loaded successfully!!
+2021-08-20/12:32:21		 wafer_16012020_051629.csv: File loaded successfully!!
+2021-08-20/12:32:28		 wafer_20022020_090716.csv: File loaded successfully!!
+2021-08-20/12:32:49		 wafer_21012020_080913.csv: File loaded successfully!!
+2021-08-20/12:33:13		 wafer_23012020_041211.csv: File loaded successfully!!
+2021-08-20/12:33:35		 wafer_27012020_080911.csv: File loaded successfully!!
+2021-08-20/12:33:59		 wafer_28012020_090817.csv: File loaded successfully!!
+2021-08-20/12:34:19		 wafer_28042020_031911.csv: File loaded successfully!!
+2021-08-20/12:35:04		 wafer_29012020_050617.csv: File loaded successfully!!
+2021-08-20/12:35:04		Insertion in Table completed!!!
+2021-08-20/12:35:04		Deleting Good Prediction Data Folder!!!
+2021-08-20/12:35:04		GoodRaw directory deleted successfully!!
+2021-08-20/12:35:04		Good_Data folder deleted!!!
+2021-08-20/12:35:04		Moving bad prediction files to Archive and deleting Bad_Data folder!!!
+2021-08-20/12:35:04		Bad files moved to archive
+2021-08-20/12:35:04		Bad Raw Data Folder Deleted successfully!!
+2021-08-20/12:35:04		Bad files moved to archive!! Bad folder Deleted!!
+2021-08-20/12:35:04		Validation Operation completed!!
+2021-08-20/12:35:04		Extracting csv file from table
+2021-08-20/12:35:04		Opened Prediction database successfully
+2021-08-20/12:35:06		Prediction consolidated file exported successfully!!!
+2021-08-20/12:35:06		Removed the local folder Postman that held prediction input files
+2021-08-20/12:35:06		Start of Prediction...
+2021-08-20/12:35:06		Entered the get_data method of the Data_Getter class
+2021-08-20/12:35:06		Data Load Successful. Exited the get_data method of the Data_Getter class
+2021-08-20/12:35:06		Entered the is_null_present method of the Preprocessor class
+2021-08-20/12:35:07		Missing values found and written to : Reports/null_values_prediction_data.csv
+2021-08-20/12:35:07		Entered the impute_missing_values method of the Preprocessor class
+2021-08-20/12:35:12		Imputing missing values Successful. Exited the impute_missing_values method of the Preprocessor class
+2021-08-20/12:35:12		Entered the remove_columns method of the Preprocessor class
+2021-08-20/12:35:12		Column removal Successful.Exited the remove_columns method of the Preprocessor class
+2021-08-20/12:35:12		Folder: models/ matching s3 download destination deleted.
+2021-08-20/12:35:12		Folder: models/ newly created, to download s3 data.
+2021-08-20/12:35:12		Downloading data from s3 bucket: wafer-models to local directory: models/
+2021-08-20/12:35:13		Downloading data from s3 bucket: wafer-models & prefix: Cluster0/ to local directory: models/Cluster0/
+2021-08-20/12:35:14		Downloaded file: Cluster0/RandomForest0.sav to models//Cluster0/RandomForest0.sav
+2021-08-20/12:35:15		Downloaded file: Cluster0/XGBoost0.sav to models//Cluster0/XGBoost0.sav
+2021-08-20/12:35:15		Successfully downloaded 2 files to models/Cluster0/ directory
+2021-08-20/12:35:15		Downloading data from s3 bucket: wafer-models & prefix: Cluster1/ to local directory: models/Cluster1/
+2021-08-20/12:35:15		Downloaded file: Cluster1/RandomForest1.sav to models//Cluster1/RandomForest1.sav
+2021-08-20/12:35:16		Downloaded file: Cluster1/XGBoost1.sav to models//Cluster1/XGBoost1.sav
+2021-08-20/12:35:16		Successfully downloaded 2 files to models/Cluster1/ directory
+2021-08-20/12:35:16		Downloading data from s3 bucket: wafer-models & prefix: Cluster2/ to local directory: models/Cluster2/
+2021-08-20/12:35:17		Downloaded file: Cluster2/RandomForest2.sav to models//Cluster2/RandomForest2.sav
+2021-08-20/12:35:17		Successfully downloaded 1 files to models/Cluster2/ directory
+2021-08-20/12:35:17		Downloading data from s3 bucket: wafer-models & prefix: KMeans/ to local directory: models/KMeans/
+2021-08-20/12:35:17		Downloaded file: KMeans/KMeans.sav to models//KMeans/KMeans.sav
+2021-08-20/12:35:17		Successfully downloaded 1 files to models/KMeans/ directory
+2021-08-20/12:35:17		Successfully downloaded 4 files to models/ directory
+2021-08-20/12:35:17		Entered the load_model method of the File_Operation class
+2021-08-20/12:35:17		Model File KMeans loaded. Exited the load_model method of the Model_Finder class
+2021-08-20/12:35:22		Entered the get_cluster_model_file method of the File_Operation class
+2021-08-20/12:35:22		Model file: RandomForest1.sav for cluster: 1 loaded successfully.
+2021-08-20/12:35:23		Entered the get_cluster_model_file method of the File_Operation class
+2021-08-20/12:35:23		Model file: RandomForest2.sav for cluster: 2 loaded successfully.
+2021-08-20/12:35:23		Entered the get_cluster_model_file method of the File_Operation class
+2021-08-20/12:35:23		Model file: RandomForest0.sav for cluster: 0 loaded successfully.
+2021-08-20/12:35:23		End of Prediction
+2021-08-20/12:35:24		file: null_values_prediction_data.csv uploaded to s3 bucket: wafer-reports
+2021-08-20/12:35:25		public read access granted to file: Predictions.csv
+2021-08-20/12:35:25		file: Predictions.csv uploaded to s3 bucket: wafer-reports

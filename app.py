@@ -50,18 +50,19 @@ def predictWaferStatus():
         if request.form:
             dict_req = dict(request.form)
             response = modelPredObj.form_response(dict_req)
+            log_file.close()
             return response
         elif request.json:
             response = modelPredObj.api_response(request.json)
+            log_file.close()
             return jsonify(response)
 
     except Exception as e:
         print(e)
         error = {"error": "Something went wrong!! Try again later!"}
         error = {"error": e}
+        log_file.close()
         return render_template('404.html', error=error)
-
-    log_file.close()
 
 
 if __name__ == "__main__":
