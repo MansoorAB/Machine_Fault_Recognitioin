@@ -6,6 +6,7 @@ from data_ingestion import data_loader_prediction
 from application_logging import logger
 from Prediction_Raw_Data_Validation.predictionDataValidation import Prediction_Data_validation
 from s3_operations import s3_methods
+from datetime import datetime
 
 
 class model_prediction:
@@ -75,6 +76,7 @@ class model_prediction:
                 result = list(model.predict(cluster_data))
                 result = pd.DataFrame(list(zip(wafer_names, result)), columns=['Wafer', 'Prediction'])
                 result.to_csv(op_file, header=True, mode='a+', index=False)
+                print(datetime.now(), 'prediction complete for cluster: %d' % i)
             self.log_writer.log(self.file_object, 'End of Prediction')
 
             # Upload the null values report and output prediction to s3 bucket

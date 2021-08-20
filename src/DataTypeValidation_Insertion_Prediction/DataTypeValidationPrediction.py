@@ -159,7 +159,8 @@ class dBOperation:
                 os.makedirs(self.config['predict_data']['prediction_folder'])
 
             # Open CSV file for writing.
-            csvFile = csv.writer(open(self.config['predict_data']['prediction_file'], 'w', newline=''), delimiter=',', lineterminator='\r\n',quoting=csv.QUOTE_ALL, escapechar='\\')
+            csvFile = csv.writer(open(self.config['predict_data']['prediction_file'], 'w', newline=''),
+                                 delimiter=',', lineterminator='\r\n', quoting=csv.QUOTE_ALL, escapechar='\\')
 
             # Add the headers and data to the CSV file.
             csvFile.writerow(headers)

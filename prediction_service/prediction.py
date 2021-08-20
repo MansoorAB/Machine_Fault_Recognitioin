@@ -30,12 +30,17 @@ class ModelPrediction:
         s3b = self.config['s3_info']['data_bucket']
         s3bp = self.config['s3_info']['pred_folder']
 
+        print(datetime.now(), 'starting to fetch s3 data')
         s3m_object = s3_methods.S3Methods(self.log_file, self.log_writer)
         s3m_object.get_s3_folder_data_to_local(s3b, s3bp, local, True)
+        print(datetime.now(), 's3 data fetch is complete now!')
 
     def form_response(self, dict_request):
 
+        shutil.rmtree('Prediction_Batch_Files', ignore_errors=True)  # deleting left over folders, if any
+
         path = dict_request['folderPath']
+
         self.log_writer.log(self.log_file, 'Processing prediction initiated via web form.'
                                            'Prediction folder given: %s' % path)
 
@@ -50,15 +55,14 @@ class ModelPrediction:
             return Response(message)
         else:
             # create a directory by name path (provided by user) and get s3 prediction data over there
-            print(datetime.now(), 'starting to fetch s3 data')
+
             self.get_s3_data(path)
-            print(datetime.now(), 'end of fetch s3 data')
 
             # Validate the Prediction Files given
             pred_val = pred_validation(path, self.config, self.log_file)
             pred_val.prediction_validation()
 
-            print(datetime.now(), 'End of validation')
+            print(datetime.now(), 'End of validation, starting prediction...')
 
             shutil.rmtree(path)  # removing prediction folder as consolidated file is prepared
             self.log_writer.log(self.log_file, 'Removed the local folder %s that held prediction input files' % path)
@@ -84,7 +88,8 @@ class ModelPrediction:
                 self.log_writer.log(self.log_file, message)
                 return Response(message)
             elif os.path.isdir(path):
-                message = 'Path provided already exists! Please provide a different path or go for Default File Predict.'
+                message = 'Path provided already exists! ' \
+                          'Please provide a different path or go for Default File Predict.'
                 self.log_writer.log(self.log_file, message)
                 return Response(message)
             else:
@@ -92,6 +97,7 @@ class ModelPrediction:
                 self.get_s3_data(path)
 
                 # Validate the Prediction Files given
+                print(datetime.now(), 'start of validation for api call')
                 pred_val = pred_validation(path, self.config, self.log_file)
                 pred_val.prediction_validation()
 
@@ -99,10 +105,11 @@ class ModelPrediction:
                 self.log_writer.log(self.file_object, 'Removed the local folder %s that held prediction input files' % path)
 
                 # Make prediction on the consolidated prediction file
+                print(datetime.now(), 'end of validation and start of prediction for api call')
                 make_pred = model_prediction(path, self.config, self.log_file)
                 op_path, json_predictions = make_pred.predictionFromModel()
 
-                return {'Output File': op_path, 'Sample Predictions': json.loads(json_predictions)}
+                return {'Output File url': op_path, 'Sample Predictions': json.loads(json_predictions)}
 
         except Exception as e:
             return {'response': str(e)}
