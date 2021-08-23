@@ -1,11 +1,37 @@
 
 # Machine Fault Recognition using Wafer 
 
+## Table of Content
+  * [Demo](#demo)
+  * [Overview](#overview)
+  * [Motivation](#motivation)
+  * [Technical Aspect](#technical-aspect)
+  * [Installation](#installation)
+  * [Run](#run)
+  * [Deployement on Heroku](#deployement-on-heroku)
+  * [Directory Tree](#directory-tree)
+  * [To Do](#to-do)
+  * [Bug / Feature Request](#bug---feature-request)
+  * [Technologies Used](#technologies-used)
+  * [Team](#team)
+  * [License](#license)
+  * [Credits](#credits)
+  
+## Demo
+Link: [https://machine-fault-recog-mbaig.herokuapp.com/](https://machine-fault-recog-mbaig.herokuapp.com/)
+
+[![](https://imgur.com/ZOAt16X.png)](https://machine-fault-recog-mbaig.herokuapp.com/)
+
+## Overview
 This project is about predicting a production line machine fault status using Wafer data. 
 
-For this purpose, historical data is validated, segregated into clusters and then seperate machine learning models are built for each cluster. 
+For this purpose, historical data is validated, segregated into clusters and then separate machine learning models are built for each cluster. 
 
 During prediction, each wafer is classified into an appropriate cluster and using the model for that cluster, its status is predicted.
+
+## Motivation
+
+
 
 **Services Used:**
 
@@ -54,7 +80,7 @@ Runs under two modes:
   
 ## Demo
 
-https://media.giphy.com/media/wnOjxfRSbrMS3xLU4u/source.mov?cid=790b761144220111132ad55c6b8daecf487224476ebee8b8&rid=source.mov&ct=g
+https://youtu.be/s99jKCqQ8Vs
 
   
 ## Deployment
