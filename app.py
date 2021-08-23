@@ -3,6 +3,9 @@ import os
 import shutil
 from flask_cors import CORS, cross_origin
 import flask_monitoringdashboard as dashboard
+from rq import Queue
+from worker import conn
+
 
 import sys
 # sys.path.append(os.path.join(sys.path[0], 'src'))  # for local deployment
@@ -43,17 +46,20 @@ def predictWaferStatus():
     # @ "C:\Users\<UserName>\.aws\credentials"
     # & "C:\Users\<UserName>\.aws\config"
 
+    # Creating a RQ queue to execute worker tasks on heroku
+    q = Queue(connection=conn)
+
     # Invoking the prediction object
     modelPredObj = ModelPrediction(log_file)
 
     try:
         if request.form:
             dict_req = dict(request.form)
-            response = modelPredObj.form_response(dict_req)
+            response = q.enqueue(modelPredObj.form_response(dict_req))  # q.enqueue() added
             log_file.close()
             return response
         elif request.json:
-            response = modelPredObj.api_response(request.json)
+            response = q.enqueue(modelPredObj.api_response(request.json))
             log_file.close()
             return jsonify(response)
 
