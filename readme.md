@@ -79,13 +79,24 @@ install the requirements file
   pip install -r requirements.txt
 ```
 
-Clone this repo to your local machine
+download the data from
 
-```bash
-  git clone https://github.com/MansoorAB/Machine_Fault_Recognitioin.git
+```http
+    gdrive link goes here
 ```
 
-Open the project folder in IDE like Pycharm 
+create a working directory to hold the project
+use the below git commands to push work directory contents to your git repo
+
+```bash
+    git init
+    git add . && git commit -m "first commit"
+    git remote add origin https://github.com/.......git
+    git branch -M main
+    git push origin main
+```
+
+
 
 
   
