@@ -9,7 +9,7 @@ During prediction, each wafer is classified into an appropriate cluster and usin
 
 **Services Used:**
 
-Vesion Control: DVC
+Version Control: DVC
 
 Source Control: this git repository
 
@@ -32,7 +32,7 @@ Using one click the models are automatically built and upon commit to git, they 
 
 | Parameter | Type     | Description                |
 | :-------- | :------- | :------------------------- |
-| `folder path` | `string` | **Required** |
+| `folderPath` | `string` | **Required** |
 
 #### Post JSON Request
 
@@ -40,9 +40,10 @@ Using one click the models are automatically built and upon commit to git, they 
   POST https://machine-fault-recog-mbaig.herokuapp.com/predict
 ```
 
-| Parameter | Type     | Description                       |
-| :-------- | :------- | :-------------------------------- |
-| `id`      | `string` | **Required**. Id of item to fetch |
+| Parameter | Type     | Description                |
+| :-------- | :------- | :------------------------- |
+| `folderPath` | `string` | **Required** |
+
 
 #### Gives prediction about machine status
 
