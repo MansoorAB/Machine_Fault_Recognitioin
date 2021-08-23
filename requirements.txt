@@ -40,6 +40,5 @@ tox
 flake8
 gunicorn
 boto3
-rq
 
 
