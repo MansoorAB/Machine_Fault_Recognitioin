@@ -22,7 +22,7 @@
 ## Demo
 Link: [https://machine-fault-recog-mbaig.herokuapp.com/](https://machine-fault-recog-mbaig.herokuapp.com/)
 
-(https://youtu.be/s99jKCqQ8Vs)
+[![](https://imgur.com/opAE9KX.png)](https://youtu.be/s99jKCqQ8Vs)
 
 [![](https://imgur.com/ZOAt16X.png)](https://machine-fault-recog-mbaig.herokuapp.com/)
 
