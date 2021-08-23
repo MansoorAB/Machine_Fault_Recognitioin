@@ -10,6 +10,9 @@ from prediction_Validation_Insertion import pred_validation
 from predictFromModel import model_prediction
 from s3_operations import s3_methods
 
+from rq import Queue
+from worker import conn
+
 
 class ModelPrediction:
 
@@ -44,6 +47,9 @@ class ModelPrediction:
         self.log_writer.log(self.log_file, 'Processing prediction initiated via web form.'
                                            'Prediction folder given: %s' % path)
 
+        # Creating a RQ queue to execute worker tasks on heroku
+        q = Queue(connection=conn)
+
         # check the path provided is not blank, not an existing path
         if not path:
             message = 'Path is blank! Please provide a valid path and try again or go for Default File Predict.'
@@ -60,7 +66,7 @@ class ModelPrediction:
 
             # Validate the Prediction Files given
             pred_val = pred_validation(path, self.config, self.log_file)
-            pred_val.prediction_validation()
+            q.enqueue(pred_val.prediction_validation())
 
             print(datetime.now(), 'End of validation, starting prediction...')
 
@@ -82,6 +88,9 @@ class ModelPrediction:
             self.log_writer.log(self.log_file, 'Processing prediction initiated via api call. '
                                                'Prediction folder given: %s' % path)
 
+            # Creating a RQ queue to execute worker tasks on heroku
+            q = Queue(connection=conn)
+
             # check the path provided is not blank, not an existing path
             if not path:
                 message = 'Path is blank! Please provide a valid path and try again or go for Default File Predict.'
@@ -99,7 +108,7 @@ class ModelPrediction:
                 # Validate the Prediction Files given
                 print(datetime.now(), 'start of validation for api call')
                 pred_val = pred_validation(path, self.config, self.log_file)
-                pred_val.prediction_validation()
+                q.enqueue(pred_val.prediction_validation())
 
                 shutil.rmtree(path, ignore_errors=True)  # removing prediction folder as consolidated file is prepared
                 self.log_writer.log(self.log_file, 'Removed the local folder %s that held prediction input files' % path)
