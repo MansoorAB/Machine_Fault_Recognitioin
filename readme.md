@@ -8,8 +8,8 @@
   * [Technical Aspect](#technical-aspect)
   * [Web Request](#web-form-request)
   * [API Call](#api-call-via-postman)
-  * [Installation](#installation)
-  * [Run](#run)
+  * [Deployment](#deployment)
+  * [Execution](#execution-preparation-and-steps)
   * [Deployement on Heroku](#deployement-on-heroku)
   * [Directory Tree](#directory-tree)
   * [To Do](#to-do)
@@ -22,7 +22,9 @@
 ## Demo
 Link: [https://machine-fault-recog-mbaig.herokuapp.com/](https://machine-fault-recog-mbaig.herokuapp.com/)
 
-[![](https://imgur.com/opAE9KX.png)](https://youtu.be/s99jKCqQ8Vs)
+<iframe width="560" height="315" src="https://www.youtube.com/embed/p_DSL-QIK64" title="YouTube video player" 
+frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+allowfullscreen></iframe>
 
 [![](https://imgur.com/ZOAt16X.png)](https://machine-fault-recog-mbaig.herokuapp.com/)
 
@@ -66,12 +68,6 @@ This project is divided into two parts:
 | :-------- | :------- | :------------------------- |
 | `folderPath` | `string` | **Required** |
 
-
-## Demo
-
-https://youtu.be/s99jKCqQ8Vs
-
-  
 ## Deployment
 
 To deploy this project, please follow the below steps in the same order 
