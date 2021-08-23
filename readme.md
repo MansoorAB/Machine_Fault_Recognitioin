@@ -25,12 +25,17 @@ Link: [https://machine-fault-recog-mbaig.herokuapp.com/](https://machine-fault-r
 ## Overview
 This project is about predicting a production line machine fault status using Wafer data. 
 
-For this purpose, historical data is validated, segregated into clusters and then separate machine learning models are built for each cluster. 
+For this purpose, historical data is validated, segregated into clusters and then separate machine learning models are 
+built for each cluster. 
 
-During prediction, each wafer is classified into an appropriate cluster and using the model for that cluster, its status is predicted.
+During prediction, each wafer is classified into an appropriate cluster and using the model for that cluster, 
+its status is predicted.
 
 ## Motivation
+Early prediction of faulty machines will help the factory personnel to carry out relevant maintenance tasks. 
+This will ensure uninterrupted production service line. 
 
+An interruption to production service line is causing a huge financial impact and loss of reputation to the client.  
 
 
 **Services Used:**
