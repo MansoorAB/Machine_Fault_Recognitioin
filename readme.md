@@ -6,6 +6,8 @@
   * [Overview](#overview)
   * [Motivation](#motivation)
   * [Technical Aspect](#technical-aspect)
+  * [Web Request](#web-form-request)
+  * [API Call](#api-call-via-postman)
   * [Installation](#installation)
   * [Run](#run)
   * [Deployement on Heroku](#deployement-on-heroku)
@@ -19,6 +21,8 @@
   
 ## Demo
 Link: [https://machine-fault-recog-mbaig.herokuapp.com/](https://machine-fault-recog-mbaig.herokuapp.com/)
+
+(https://youtu.be/s99jKCqQ8Vs)
 
 [![](https://imgur.com/ZOAt16X.png)](https://machine-fault-recog-mbaig.herokuapp.com/)
 
@@ -35,27 +39,14 @@ its status is predicted.
 Early prediction of faulty machines will help the factory personnel to carry out relevant maintenance tasks. 
 This will ensure uninterrupted production service line. 
 
-An interruption to production service line is causing a huge financial impact and loss of reputation to the client.  
+An interruption to production service line is causing a huge financial impact and loss of reputation to the client. 
 
+## Technical Aspect 
+This project is divided into two parts:
+1. CICD pipeline using DVC, to create machine learning models based on training data.
+2. Prediction service built and hosted using Flask web app on Heroku
 
-**Services Used:**
-
-Version Control: DVC
-
-Source Control: this git repository
-
-Cloud Service: Heroku
-
-Using one click the models are automatically built and upon commit to git, they are automatically deployed to Heroku platform.
-
-
-
-
-
-
-
-
-## API Reference
+## Web Form Request
 
 ```http
   https://machine-fault-recog-mbaig.herokuapp.com/
@@ -65,7 +56,7 @@ Using one click the models are automatically built and upon commit to git, they 
 | :-------- | :------- | :------------------------- |
 | `folderPath` | `string` | **Required** |
 
-#### Post JSON Request
+## API call (via postman)
 
 ```http
   POST https://machine-fault-recog-mbaig.herokuapp.com/predict
@@ -76,13 +67,6 @@ Using one click the models are automatically built and upon commit to git, they 
 | `folderPath` | `string` | **Required** |
 
 
-#### Gives prediction about machine status
-
-Runs under two modes:
-1. Takes custom folder path provided by user and generates predictions in a .csv file, sharing the output location.
-2. Uses the inbuilt prediction folder, genereate the .csv and share the path.
-
-  
 ## Demo
 
 https://youtu.be/s99jKCqQ8Vs
