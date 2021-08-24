@@ -10,21 +10,13 @@
   * [API Call](#api-call-via-postman)
   * [Deployment](#deployment)
   * [Execution](#execution-preparation-and-steps)
-  * [Deployement on Heroku](#deployement-on-heroku)
-  * [Directory Tree](#directory-tree)
-  * [To Do](#to-do)
-  * [Bug / Feature Request](#bug---feature-request)
-  * [Technologies Used](#technologies-used)
-  * [Team](#team)
-  * [License](#license)
-  * [Credits](#credits)
+  * [Technology Used](#technology-used)
+  * [Authors](#authors)
   
 ## Demo
 Link: [https://machine-fault-recog-mbaig.herokuapp.com/](https://machine-fault-recog-mbaig.herokuapp.com/)
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/p_DSL-QIK64" title="YouTube video player" 
-frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-allowfullscreen></iframe>
+[![](http://img.youtube.com/vi/p_DSL-QIK64/0.jpg)](http://www.youtube.com/watch?v=p_DSL-QIK64 "Machine Fault Recognition")
 
 [![](https://imgur.com/ZOAt16X.png)](https://machine-fault-recog-mbaig.herokuapp.com/)
 
@@ -115,30 +107,54 @@ build your own package commands
 
 ## Execution Preparation and Steps:
 1. Data for training and prediction is coming from Amazon S3 bucket. Make your own S3 bucket and hold the data
-    a. Training Data - bucket: wafer-data and folder/object: historical-data/
-    b. Prediction Data - bucket: wafer-data and folder/object: current-data/
-2. All the training modules can be run with a single command $ dvc repro
+    - Training Data - bucket: wafer-data and folder/object: historical-data/
+    - Prediction Data - bucket: wafer-data and folder/object: current-data/
+2. All the training modules can be run with a single command $ **dvc repro**
 3. It will segregate train data into clusters and create custom model for each cluster. The models will sit in 
    s3 bucket: wafer-models and reports would go to bucket: wafer-reports
 4. s3 buckets need to be created manually by user along with an s3 full access permissions. 
    These keys need to be updated as follows:
-   Windows - Update the file "C:\Users\<UserName>\.aws\credentials" 
-   Heroku - $ heroku config:set AWS_ACCESS_KEY_ID=xxx AWS_SECRET_ACCESS_KEY=yyy AWS_DEFAULT_REGION=zzz -a <dyno-name>
+   - Windows - Update the file "C:\Users\UserName\.aws\credentials" 
+   - Heroku - $ heroku config:set AWS_ACCESS_KEY_ID=xxx AWS_SECRET_ACCESS_KEY=yyy AWS_DEFAULT_REGION=zzz -a <dyno-name>
 5. Prediction can be invoked from the url https://machine-fault-recog-mbaig.herokuapp.com/ or via postman service
    as mentioned above
 
+## Technology Used
+<p align="left">
+
+<a href="https://www.python.org" target="_blank"> 
+<img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/python/python-original.svg" alt="python" 
+width="40" height="40"/> </a>
+
+<a href="https://scikit-learn.org/" target="_blank"> 
+<img src="https://upload.wikimedia.org/wikipedia/commons/0/05/Scikit_learn_logo_small.svg" alt="scikit_learn" 
+width="40" height="40"/> </a>
+
+<a href="https://aws.amazon.com/s3/" target="_blank"> 
+<img src="https://panoply.io/images/integration-logos/s3.svg" alt="amazon-s3" width="40" height="40"/> </a>
+
+<a href="https://www.mysql.com/" target="_blank"> 
+<img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/mysql/mysql-original-wordmark.svg" 
+alt="mysql" width="40" height="40"/> </a>
+
+<a href="https://flask.palletsprojects.com/" target="_blank"> 
+<img src="https://www.vectorlogo.zone/logos/pocoo_flask/pocoo_flask-icon.svg" alt="flask" width="40" height="40"/> </a>
+
+<a href="https://heroku.com" target="_blank"> 
+<img src="https://www.vectorlogo.zone/logos/heroku/heroku-icon.svg" alt="heroku" width="40" height="40"/> </a>
+
+<a href="https://dvc.org/" target="_blank"> 
+<img src="https://icons-for-free.com/iconfiles/png/512/vscode+icons+type+dvc-1324451283933302923.png" alt="dvc" 
+width="40" height="40"/> </a>
+
+</p>
 
 
-
-
-  
 ## Authors
 
 - [@Mansoor Baig](https://github.com/MansoorAB)
 
   
-## Appendix
 
-DVC https://dvc.org/
 
   
